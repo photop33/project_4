@@ -13,7 +13,7 @@ pipeline {
         stage('rest_app') {
             steps {
                 script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\project1\\rest_app.py'
+                    bat 'start/min python3 C:\\Users\\l1313\\Desktop\\Devops\\Project-3\\rest_app.py'
                     bat 'echo success rest_app'
                 }
             }
@@ -21,7 +21,7 @@ pipeline {
         stage('Backend_testing') {
             steps {
                 script {
-                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\project1\\Backend_testing.py'
+                    bat 'python3 C:\\Users\\l1313\\Desktop\\Devops\\Project-3\\Backend_testing.py'
                     bat 'echo success Backend_testing'
                 }
             }
@@ -29,7 +29,7 @@ pipeline {
         stage('clean_environemnt') {
             steps {
                 script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\project1\\clean_environemnt.py'
+                    bat 'start/min python3 C:\\Users\\l1313\\Desktop\\Devops\\Project-3\\clean_environemnt.py'
                     bat 'echo success clean_environemnt'
                 }
             }
