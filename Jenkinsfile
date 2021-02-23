@@ -10,7 +10,7 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-                stage('rest_app') {
+        stage('rest_app') {
             steps {
                 script {
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\project1\\rest_app.py'
