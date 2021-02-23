@@ -34,13 +34,22 @@ pipeline {
                 }
             }
         }
-        
-    stage('Running Docker Container') {
-        steps {
-         bat  "docker-compose up -d"
-             }
-        }
-    }
+        stage('clean_environemnt') {
+            steps {
+                script {
+                    bat 'docker build -t shalom .'
+                    bat 'echo success IMAGE
+                }
+           }
+       }
+       stage('clean_environemnt') {
+            steps {
+                script {
+                    bat 'docker -d -p 80:88 --name KING shalom'
+                    bat 'echo success dockker 
+                }
+            }
+       }
 }
 
  
