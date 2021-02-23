@@ -34,7 +34,7 @@ pipeline {
                 }
             }
         }
-        stage('clean_environemnt') {
+        stage('IMAGE dockerfile') {
             steps {
                 script {
                     bat 'docker build -t shalom .'
@@ -42,7 +42,7 @@ pipeline {
                 }
            }
        }
-       stage('clean_environemnt') {
+       stage('docker run ') {
             steps {
                 script {
                     bat 'docker -d -p 80:88 --name KING shalom'
