@@ -46,7 +46,7 @@ pipeline {
             steps {
                 script {
                     bat 'docker -d -p 80:88 --name KING shalom'
-                    bat 'echo success dockker 
+                    bat 'echo success dockker'
                 }
             }
        }
