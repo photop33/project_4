@@ -15,7 +15,6 @@ pipeline {
                 script {
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\project1\\rest_app.py'
                     bat 'echo success rest_app'
-
                 }
             }
         }
@@ -40,16 +39,6 @@ pipeline {
         steps {
          bat  "docker-compose up -d"
          }
-    }
-    stage('rest_app') {
-            steps {
-                script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\project1\\docker_backend_testing.py'
-                    bat 'docker_backend_testing.py'
-
-                }
-            }
-        }
     }
 }
 
