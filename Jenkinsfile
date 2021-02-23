@@ -38,7 +38,8 @@ pipeline {
     stage('Running Docker Container') {
         steps {
          bat  "docker-compose up -d"
-         }
+             }
+        }
     }
 }
 
