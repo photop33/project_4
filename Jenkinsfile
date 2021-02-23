@@ -35,14 +35,7 @@ pipeline {
                 }
             }
         }
-        stage('Build') {
-             steps {
-                sh 'mvn -B'
-                }
-             }
     }
-}
-
 
 node {
       def app
