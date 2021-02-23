@@ -38,7 +38,7 @@ pipeline {
         
     stage('Running Docker Container') {
         steps {
-         bat " "docker-compose up -d""
+         bat  "docker-compose up -d"
          }
     }
     stage('rest_app') {
@@ -50,14 +50,7 @@ pipeline {
                 }
             }
         }
-        stage('clean_environment') {
-            steps {
-                script {
-                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\project1\\clean_environment.py'
-                    bat 'echo success clean_environment'
-                }
-            }
-        }
+
     }
 }
 
