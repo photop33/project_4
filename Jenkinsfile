@@ -38,7 +38,7 @@ pipeline {
             steps {
                 script {
                     bat 'docker build -t shalom .'
-                    bat 'echo success IMAGE
+                    bat 'echo success IMAGE'
                 }
            }
        }
