@@ -53,7 +53,9 @@ pipeline {
     }
     post {
         always {
+            bat "docker images"
             bat "docker rmi $registry:${1}" 
+            bat "docker images"
             bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
             bat 'docker compuse up -d'
             bat 'echo docker compuse up'
