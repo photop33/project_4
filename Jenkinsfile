@@ -21,7 +21,7 @@ pipeline {
        stage('docker run ') {
             steps {
                 script {
-                    bat 'docker run -d -p 80:88 --name KING shalom'
+                    bat 'docker run shalom'
                     bat 'echo success dockker'
                 }
             }
