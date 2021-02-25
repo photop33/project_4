@@ -10,11 +10,10 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-       stage('IMAGE dockerfile') {
-            steps {
-                script {
-                    bat 'docker build -t shalom .'
-                    bat 'echo success IMAGE'
+        stage('Building our image') { 
+            steps { 
+                script { 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
            }
        }
