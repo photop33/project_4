@@ -18,7 +18,7 @@ pipeline {
          stage('build and push image') { 
             steps { 
                 script { 
-                    dockerImage = project  ":${5}" 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
                     docker.withRegistry('', registryCredential) {
                     dockerImage.push() 
                           }
@@ -27,7 +27,7 @@ pipeline {
                 post {
                   always {
 
-                      bat "docker rmi $registry:${5}“ 
+                      bat "docker rmi $registry:$BUILD_NUMBER" 
                        stage('make env file') { 
          steps {
                      bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
