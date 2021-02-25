@@ -13,7 +13,7 @@ pipeline {
         stage('Building our image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + "shalom" 
+                    dockerImage = docker.build registry + shalom 
                 }
            }
        }
