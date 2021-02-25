@@ -10,14 +10,22 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-        stage('rest_app') {
+       stage('IMAGE dockerfile') {
             steps {
                 script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\rest_app.py'
-                    bat 'echo success rest_app'
+                    bat 'docker build -t shalom .'
+                    bat 'echo success IMAGE'
+                }
+           }
+       }
+       stage('docker run ') {
+            steps {
+                script {
+                    bat 'docker run -d -p 80:88 --name KING shalom'
+                    bat 'echo success dockker'
                 }
             }
-        }
+       }
         stage('Backend_testing') {
             steps {
                 script {
@@ -34,22 +42,7 @@ pipeline {
                 }
             }
         }
-        stage('IMAGE dockerfile') {
-            steps {
-                script {
-                    bat 'docker build -t shalom .'
-                    bat 'echo success IMAGE'
-                }
-           }
-       }
-       stage('docker run ') {
-            steps {
-                script {
-                    bat 'docker run -d -p 80:88 --name KING shalom'
-                    bat 'echo success dockker'
-                }
-            }
-       }
+
     }
 }
 
