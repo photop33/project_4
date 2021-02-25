@@ -2,7 +2,7 @@ pipeline {
     environment { 
         registry = "photop33/Project3" 
         registryCredential = 'docker_hub' 
-        dockerImage = project
+       dockerImage = docker.build registry + ":$1"
     } 
     agent any
     stages {
