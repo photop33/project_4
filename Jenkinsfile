@@ -1,5 +1,11 @@
 pipeline { 
     agent any
+
+    environment { 
+        registry = "photop/project-3" 
+        registryCredential = 'docker_hub' 
+        dockerImage =''
+    } 
     stages {
         stage('properties') {
             steps {
@@ -9,7 +15,7 @@ pipeline {
                 }
                 git 'https://github.com/photop33/project3.git'
             }
-            
+        }     
         stage('rest_app.py') {
             steps {
                 script {
@@ -17,7 +23,7 @@ pipeline {
                     bat 'echo success dockker'
                 }
             }
-       }
+        }
         stage('Backend_testing') {
             steps {
                 script {
@@ -32,43 +38,25 @@ pipeline {
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
                     bat 'echo success clean_environemnt'
                    }
-                }
-              }
+            }
         }
-    environment { 
-        registry = "photop/project-3" 
-        registryCredential = 'docker_hub' 
-        dockerImage =''
-    } 
-         stage('build and push image') { 
+        stage('build and push image') { 
             steps { 
                 script { 
                     dockerImage = "project" + "${n1}"
                     docker.withRegistry('', registryCredential) {
                     dockerImage.push() 
-                          }
+                        }
                      }
                 }
-                post {
-                  always {
-                      bat "docker rmi $registry:${n1}" 
-                       stage('make env file') { 
-         steps {
-                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
-         } 
-         stage('docker compose up') {
-            steps {
-                script {
-                    bat 'docker compuse up -d'
-                }
-            }
-        }                           
-        stage('clean_environemnt') {
-            steps {
-                script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
-                    bat 'echo success clean_environemnt'           
-                           
+        }
     }
-}
-}
+    post {
+        always {
+            bat "docker rmi $registry:${n1}" 
+            bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+            bat 'docker compuse up -d'
+            bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
+            bat 'echo success clean_environemnt'                    
+        } 
+    }
