@@ -1,7 +1,12 @@
-pipeline {
+pipeline { 
+    environment { 
+        registry = "YourDockerhubAccount/YourRepository" 
+        registryCredential = 'dockerhub' 
+        dockerImage = '' 
+    } 
     agent any
     stages {
-        stage('checkout') {
+        stage('properties') {
             steps {
                 script {
                     properties([pipelineTriggers([pollSCM('*/30 * * * *')])])
@@ -13,10 +18,25 @@ pipeline {
         stage('Building our image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + shalom 
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
                 }
            }
        }
+        stage('Deploy our image') { 
+            steps { 
+                script { 
+                    docker.withRegistry( '', registryCredential ) { 
+                        dockerImage.push() 
+                    }
+                } 
+            }
+        } 
+        
+        
+        
+        
+        
+        
        stage('docker run ') {
             steps {
                 script {
