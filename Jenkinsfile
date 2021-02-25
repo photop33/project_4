@@ -4,7 +4,7 @@ pipeline {
     environment { 
         registry = "photop/project-3" 
         registryCredential = 'docker_hub' 
-        dockerImage = 'project'
+        dockerImage = 'project -3'
     } 
     stages {
         stage('properties') {
