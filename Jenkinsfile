@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment { 
-        registry = "project-3" 
+        registry = "photop/project-3" 
         registryCredential = 'docker_hub' 
         dockerImage =''
     } 
@@ -55,7 +55,6 @@ pipeline {
         always {
             bat "docker images"
             //bat "docker rmi $registry:${1}" 
-            bat "docker images"
             bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
             bat 'docker compose up -d'
             bat 'echo docker compuse up'
