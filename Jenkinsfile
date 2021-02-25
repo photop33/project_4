@@ -13,8 +13,16 @@ pipeline {
                           }
                      }
                 }
-            }
-        }
+                post {
+                  always {
+
+                      bat "docker rmi $registry:${1}“ 
+                       stage('make env file') { 
+         steps {
+                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+         }
+           
+
     agent any
     stages {
         stage('properties') {
@@ -26,26 +34,7 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-
-        stage('make env file') { 
-            steps {
-
-                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
-                  post {
-                  always {
-
-                      bat "docker rmi $registry:${1}“ 
-
-        stage('Deploy our image') { 
-            steps { 
-                script { 
-                    docker.withRegistry( '', registryCredential ) { 
-                        dockerImage.push() 
-                    }
-                } 
-            }
-        } 
-       stage('docker run ') {
+        stage('docker run ') {
             steps {
                 script {
                     bat 'docker run shalom'
