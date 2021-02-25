@@ -43,7 +43,7 @@ pipeline {
          stage('build and push image') { 
             steps { 
                 script { 
-                    dockerImage = project + ":$1n“ 
+                    dockerImage = project ":$1n“ 
                     docker.withRegistry('', registryCredential) {
                     dockerImage.push() 
                           }
