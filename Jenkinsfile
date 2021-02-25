@@ -13,8 +13,7 @@ pipeline {
         stage('rest_app.py') {
             steps {
                 script {
-                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\rest_app
-                    .py'
+                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\rest_app.py'
                     bat 'echo success dockker'
                 }
             }
