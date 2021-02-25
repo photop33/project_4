@@ -57,7 +57,8 @@ pipeline {
                     bat 'echo success clean_environemnt'
                    }
                 }
-            }
+              }
+           }
         }
     }
 }
