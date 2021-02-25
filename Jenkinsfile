@@ -1,28 +1,4 @@
 pipeline { 
-    environment { 
-        registry = "photop/project-3" 
-        registryCredential = 'docker_hub' 
-        dockerImage = project
-    } 
-         stage('build and push image') { 
-            steps { 
-                script { 
-                    dockerImage = project + ":$1" 
-                    docker.withRegistry('', registryCredential) {
-                    dockerImage.push() 
-                          }
-                     }
-                }
-                post {
-                  always {
-
-                      bat "docker rmi $registry:$1“ 
-                       stage('make env file') { 
-         steps {
-                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
-         }
-           
-
     agent any
     stages {
         stage('properties') {
@@ -34,6 +10,30 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
+    environment { 
+        registry = "photop/project-3" 
+        registryCredential = 'docker_hub' 
+        dockerImage = project
+    } 
+         stage('build and push image') { 
+            steps { 
+                script { 
+                    dockerImage = project + ":$5" 
+                    docker.withRegistry('', registryCredential) {
+                    dockerImage.push() 
+                          }
+                     }
+                }
+                post {
+                  always {
+
+                      bat "docker rmi $registry:$5“ 
+                       stage('make env file') { 
+         steps {
+                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+         }
+           
+
         stage('docker run ') {
             steps {
                 script {
