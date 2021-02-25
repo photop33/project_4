@@ -56,7 +56,7 @@ pipeline {
             bat "docker rmi $registry:${n1}" 
             bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
             bat 'docker compuse up -d'
-            bat 'docker compuse up -d'
+            bat 'echo docker compuse up'
             bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
             bat 'echo success clean_environemnt'  
             bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\docker_backend_testing.py'
