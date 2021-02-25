@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment { 
-        registry = "photop/project-3" 
+        registry = "project-3" 
         registryCredential = 'docker_hub' 
         dockerImage =''
     } 
