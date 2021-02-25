@@ -66,6 +66,7 @@ pipeline {
             bat 'echo success docker_backend_testing.py'
             bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
             bat 'echo success clean_environemnt'  
+                }
             } 
         }
     }
