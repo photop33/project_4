@@ -47,14 +47,15 @@ pipeline {
                     docker.withRegistry('', registryCredential) {
                     dockerImage.push() 
                         }
-                     }
-                }
+                   }  
+             }
         }
     }
     post {
         always {
             bat "docker rmi $registry:${n1}" 
             bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+            bat 'docker compuse up -d'
             bat 'docker compuse up -d'
             bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
             bat 'echo success clean_environemnt'  
