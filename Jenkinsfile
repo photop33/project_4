@@ -2,7 +2,7 @@ pipeline {
     environment { 
         registry = "photop/project-3" 
         registryCredential = 'docker_hub' 
-       dockerImage = "
+        dockerImage = "
     } 
          stage('build and push image') { 
             steps { 
