@@ -18,10 +18,23 @@ pipeline {
         stage('Building our image') { 
             steps { 
                 script { 
-                    dockerImage = docker.build registry + ":$BUILD_NUMBER" 
+                    dockerImage = project + ":$1“ 
+                    docker.withRegistry('', registryCredential) {
+                    dockerImage.push() 
+                          }
+                     }
                 }
-           }
-       }
+            }
+        }
+        stage('make env file') { 
+            steps {
+
+                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+                  post {
+                  always {
+
+                          bat "docker rmi $registry:$1“ 
+
         stage('Deploy our image') { 
             steps { 
                 script { 
@@ -31,12 +44,15 @@ pipeline {
                 } 
             }
         } 
-        
-        
-        
-        
-        
-        
+        stage('make env file') { 
+            steps {
+                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+                  post {
+                  always {
+
+                          bat "docker rmi $registry:$1“ 
+                      }
+                  }
        stage('docker run ') {
             steps {
                 script {
