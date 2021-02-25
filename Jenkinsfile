@@ -18,7 +18,7 @@ pipeline {
         stage('Building our image') { 
             steps { 
                 script { 
-                    dockerImage = project + ":$[1] “ 
+                    dockerImage = project + \:$[1] “ 
                     docker.withRegistry('', registryCredential) {
                     dockerImage.push() 
                           }
