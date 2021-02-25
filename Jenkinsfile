@@ -34,7 +34,7 @@ pipeline {
                   post {
                   always {
 
-                          bat "docker rmi $registry:$1“ 
+                      bat "docker rmi $registry:${1}“ 
 
         stage('Deploy our image') { 
             steps { 
@@ -45,15 +45,6 @@ pipeline {
                 } 
             }
         } 
-        stage('make env file') { 
-            steps {
-                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
-                  post {
-                  always {
-
-                          bat "docker rmi $registry:$1“ 
-                      }
-                  }
        stage('docker run ') {
             steps {
                 script {
