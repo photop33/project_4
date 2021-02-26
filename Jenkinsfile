@@ -50,16 +50,16 @@ pipeline {
                    }  
              }
         }
-        stage('make env file') { 
+        stage(set version') { 
             steps {
                      bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
                 }
+            }
            
     post {
         always {
             bat "docker images"
             bat "docker rmi $registry:${1}" 
-            bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
             bat 'docker compose up -d'
             bat 'echo docker compuse up'
             bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\docker_backend_testing.py'
