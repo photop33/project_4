@@ -50,7 +50,7 @@ pipeline {
         stage('build and push image') { 	
             steps { 	
                 script { 	
-                    dockerImage = ${registry} + ":$BUILD_NUMBER"	
+                    dockerImage = "${registry}" + ":$BUILD_NUMBER"	
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
                         }	
@@ -59,7 +59,7 @@ pipeline {
         }	
         stage('set version') { 	
             steps {	
-                bat "echo IMAGE_TAG=${1} > .env"      	
+                bat "echo IMAGE_TAG=${$BUILD_NUMBER} > .env"      	
               post {	
               always {	
                      bat "docker images"	
