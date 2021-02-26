@@ -45,6 +45,9 @@ pipeline {
                 script{
                     bat 'docker build -t project3'
                     bat 'bat "docker images"' 
+                }
+            }
+        }
                     
         stage('build and push image') { 
             steps { 
