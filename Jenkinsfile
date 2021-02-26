@@ -43,7 +43,7 @@ pipeline {
         stage ('Build Docker image - locally'){
             steps {
                 script{
-                    bat 'docker build -t project3'
+                    bat 'docker build -t project3 .'
                     bat 'bat "docker images"' 
                 }
             }
