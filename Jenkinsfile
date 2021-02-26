@@ -1,6 +1,6 @@
 pipeline { 
     agent any
-    stages {
+    stages {{
         stage('properties') {
             steps {
                 script {
@@ -31,19 +31,9 @@ pipeline {
                 script {
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
                     bat 'echo success clean_environemnt'
-                   }
+                 }
             }
         }
-        stage ('Build Docker image - locally'){	
-            steps {	
-                script{	
-                    bat "docker build -t project3" .	
-                    bat "docker run project3 ."	
-                    bat "docker images"	
-                }	
-            }	
-        }   
-    }
                     environment { 
                     registry = "photop/project-3" 
                     registryCredential = 'docker_hub' 
