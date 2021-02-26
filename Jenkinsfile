@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script{
                     bat 'docker build -t project3 .'
-                    bat 'docker images' 
+                    bat "docker images"
                 }
             }
         }               
