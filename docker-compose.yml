@@ -1,7 +1,6 @@
 version: '3'
 services:
   project:
-    image: "echo IMAGE_TAG=123 > .env"
     build: .
     ports:
      - "8000:8000"
