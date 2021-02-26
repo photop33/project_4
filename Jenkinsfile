@@ -81,8 +81,8 @@ pipeline {
             steps{
                 script{
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
-                    bat 'echo success clean_environemnt'  
-         .       }
+                    bat 'echo success clean_environemnt'
+                }
             }
         }
     }
