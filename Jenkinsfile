@@ -16,16 +16,11 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-        stage('Cloning Git') {
-          steps {
-            git 'https://github.com/photop33/project3.git'
-          }
-        }
         stage('build and push image') { 	
             steps { 	
                 script {
                     bat "echo ${registry}:${BUILD_NUMBER}"
-                    docker.build registry + ":${BUILD_NUMBER}"
+                    docker.build registry + ":$BUILD_NUMBER"
                     bat "echo ${dockerImage}"
                     //docker.withRegistry('', registryCredential) {	
                     //dockerImage.push() 	
