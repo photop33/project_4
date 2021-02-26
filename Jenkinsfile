@@ -40,37 +40,6 @@ pipeline {
                    }
             }
         }
-        stage ('Build Docker image - locally'){
-            steps {
-                script{
-                    bat "docker build -t project3" .
-                    bat "docker run project3 ."
-                    bat "docker images"
-                }
-            }
-        }               
-        stage('build and push image') { 
-            steps { 
-                script { 
-                    dockerImage = "project-3" + "${1}"
-                    docker.withRegistry('', registryCredential) {
-                    dockerImage.push() 
-                        }
-                   }  
-             }
-        }
-        stage('set version') { 
-            steps {
-                bat "docker images"
-                bat "echo IMAGE_TAG=${1} > .env"      
-              post {
-              always {
-                     bat "docker images"
-                     bat "docker rmi $registry:${1}"
-                  }
-               }
-            }
-         }
         stage ('docker compose'){
             steps {
                 script{
