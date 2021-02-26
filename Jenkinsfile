@@ -49,7 +49,6 @@ pipeline {
                         }
                    }  
              }
-        }
         stage(set version') { 
             steps {
                 bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"      
