@@ -27,6 +27,7 @@ pipeline {
         stage('Backend_testing') {
             steps {
                 script {
+                    bat 'python Backend_testing.py'
                     bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\Backend_testing.py'
                     bat 'echo success Backend_testing'
                 }
