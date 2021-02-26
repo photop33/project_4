@@ -57,8 +57,10 @@ pipeline {
               always {
                      bat "docker images"
                      bat "docker rmi $registry:${1}"
-              }
-          }
+                  }
+               }
+            }
+        }
         stage ('docker compose'){
             steps {
                 script{
@@ -66,9 +68,7 @@ pipeline {
                     bat 'echo docker compuse up'
                     }
                 }
-            }
-
-                    
+           }       
             bat 'docker compose up -d'
             bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\docker_backend_testing.py'
             bat 'echo success docker_backend_testing.py'
