@@ -3,7 +3,8 @@ pipeline {
 
     environment { 
         registry = "photop/project-3" 
-        registryCredential = 'docker_hub' 
+        registryCredential = 'docker_hub'
+        dockerImage = ""
     } 
     stages {
         stage('properties') {
@@ -25,8 +26,9 @@ pipeline {
         }               	
         stage('build and push image') { 	
             steps { 	
-                script { 	
-                    dockerImage = docker.build "${registry}" + ":$BUILD_NUMBER"
+                script {
+                    bat "echo ${registry}"
+                    $dockerImage = docker.build "${registry}" + ":$BUILD_NUMBER"
                     bat "echo dockerImage"
                     //docker.withRegistry('', registryCredential) {	
                     //dockerImage.push() 	
