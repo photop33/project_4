@@ -1,5 +1,10 @@
 pipeline { 
     agent any
+        environment { 
+        registry = "photop/project-3" 
+        registryCredential = 'docker_hub' 
+        dockerImage = 'project -3'
+        }
     stages {
         stage('properties') {
             steps {
@@ -34,11 +39,7 @@ pipeline {
                  }
             }
         }
-                    environment { 
-                    registry = "photop/project-3" 
-                    registryCredential = 'docker_hub' 
-                    dockerImage = 'project -3'
-                    }
+
         stage('build and push image') { 	
             steps { 	
                 script { 
@@ -48,7 +49,7 @@ pipeline {
                         }	
                    }  	
              }	
-        }	
+        }
         stage('set version') { 	
             steps {	
                 bat "docker images"	
@@ -82,9 +83,8 @@ pipeline {
                 script{
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
                     bat 'echo success clean_environemnt'
-                   }
-               }
-           }
-       }
-   }
+                }
+            }
+        }
+    }
 }
