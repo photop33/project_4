@@ -1,4 +1,6 @@
 FROM python:3
+WORKDIR /app
+COPY rest_app /app
 RUN pip install flask
-COPY .  C:\Users\l1313\Desktop\Devops\Project-3
-CMD ["python","rest_app.py"]
+EXPOSE 5000
+CMD python3 rest_app.py
