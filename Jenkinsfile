@@ -52,7 +52,7 @@ pipeline {
         }
         stage('set version') { 
             steps {
-                bat "echo IMAGE_TAG=${1} > .env"      
+                bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"      
               post {
               always {
                      bat "docker images"
