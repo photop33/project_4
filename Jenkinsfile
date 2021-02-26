@@ -30,7 +30,7 @@ pipeline {
                     bat "echo dockerImage"
                     //docker.withRegistry('', registryCredential) {	
                     //dockerImage.push() 	
-                    }	
+                    //}	
                 }  	
             }	
         }	
