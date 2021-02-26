@@ -30,13 +30,7 @@ pipeline {
         }	
         stage('set version') { 	
             steps {	
-                bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"      	
-              post {	
-              always {	
-                     bat "docker images"	
-                     bat "docker rmi $registry:${1}"	
-                  }	
-               }	
+                bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"      		
             }	
          }
         stage ('docker compose'){
@@ -64,4 +58,10 @@ pipeline {
             }
         }
     }
+  post {	
+      always {	
+             bat "docker images"	
+             bat "docker rmi $registry:${1}"	
+          }	
+  }
 }
