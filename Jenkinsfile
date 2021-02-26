@@ -59,7 +59,7 @@ pipeline {
                      bat "docker rmi $registry:${1}"
               }
           }
-                stage ('docker compose'){
+        stage ('docker compose'){
             steps {
                 script{
                     bat 'docker compuse up -d'
