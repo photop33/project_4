@@ -15,7 +15,12 @@ pipeline {
                 }
                 git 'https://github.com/photop33/project3.git'
             }
-        }                    
+        }
+        stage('Cloning Git') {
+          steps {
+            git 'https://github.com/photop33/project3.git'
+          }
+        }
         stage('build and push image') { 	
             steps { 	
                 script {
