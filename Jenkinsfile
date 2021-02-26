@@ -43,15 +43,15 @@ pipeline {
             steps {	
                 script{	
                     bat "docker build -t \"$BUILD_NUMBER\" ."	
-                    bat "start/min docker run project3"	
+                    bat "start/min docker run \"$BUILD_NUMBER\""	
                 }	
             }	
         }               	
         stage('build and push image') { 	
             steps { 	
                 script { 	
-                    dockerImage = "$registry" + ":$BUILD_NUMBER"	
-                    docker.withRegistry('', $registryCredential) {	
+                    dockerImage = ${registry} + ":$BUILD_NUMBER"	
+                    docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
                         }	
                    }  	
