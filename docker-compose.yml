@@ -8,3 +8,10 @@ services:
 
   redis:
     image: "redis:alpine"
+    
+  mysql:
+    image: "pymysql:lastest"
+    build: .
+    port:
+    - "5000.5000"
+  
