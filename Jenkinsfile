@@ -1,10 +1,11 @@
 pipeline { 
     agent any
-        environment { 
+
+    environment { 
         registry = "photop/project-3" 
-        registryCredential = 'dockerhub' 
+        registryCredential = 'docker_hub' 
         dockerImage = 'project -3'
-        }
+    } 
     stages {
         stage('properties') {
             steps {
@@ -36,14 +37,45 @@ pipeline {
                 script {
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
                     bat 'echo success clean_environemnt'
-                 }
+                   }
             }
         }
+                stage ('Build Docker image - locally'){	
+            steps {	
+                script{	
+                    bat "docker build -t project3" .	
+                    bat "docker run project3 ."	
+                    bat "docker images"	
+                }	
+            }	
+        }               	
+        stage('build and push image') { 	
+            steps { 	
+                script { 	
+                    dockerImage = "project-3" + "1"	
+                    docker.withRegistry('', registryCredential) {	
+                    dockerImage.push() 	
+                        }	
+                   }  	
+             }	
+        }	
+        stage('set version') { 	
+            steps {	
+                bat "docker images"	
+                bat "echo IMAGE_TAG=${1} > .env"      	
+              post {	
+              always {	
+                     bat "docker images"	
+                     bat "docker rmi $registry:${1}"	
+                  }	
+               }	
+            }	
+         }
         stage ('docker compose'){
             steps {
                 script{
-                    bat 'docker-compose up -d'
-                    bat 'echo docker compose up'
+                    bat 'docker-compuse up -d'
+                    bat 'echo docker compuse up'
                     }
                 }
            }       
