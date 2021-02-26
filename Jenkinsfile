@@ -43,7 +43,7 @@ pipeline {
             steps { 	
                 script { 
                     bat "docker build -t lior ."
-                    bat "docker push photop/lior:"
+                    bat "docker push photop/project-3:lior:"
                     dockerImage = "project-3" + "${1}"	
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
