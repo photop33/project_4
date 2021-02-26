@@ -44,7 +44,7 @@ pipeline {
             steps {	
                 script{	
                     bat "docker build -t \"$BUILD_NUMBER\" ."	
-                    bat "docker run project3 ."	
+                    bat "docker run project3"	
                     bat "docker images"	
                 }	
             }	
