@@ -26,13 +26,13 @@ pipeline {
         stage('build and push image') { 	
             steps { 	
                 script { 	
-                    dockerImage = ${registry} + ":$BUILD_NUMBER"
+                    dockerImage = docker.build "${registry}" + ":$BUILD_NUMBER"
                     bat "echo ${dockerImage}"
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
-                        }	
-                   }  	
-             }	
+                    }	
+                }  	
+            }	
         }	
         stage('set version') { 	
             steps {	
