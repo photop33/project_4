@@ -53,7 +53,7 @@ pipeline {
         stage(set version') { 
             steps {
                 script {
-                     bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"
+                     bat "echo IMAGE_TAG=${1} > .env"
                 }
             }
         }
