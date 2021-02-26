@@ -51,9 +51,7 @@ pipeline {
         stage('build and push image') { 	
             steps { 	
                 script {
-                    bat "echo ${registry}:${BUILD_NUMBER}"
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
-                    bat "echo ${dockerImage}"
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
                     }	
