@@ -40,6 +40,12 @@ pipeline {
                    }
             }
         }
+        stage ('Build Docker image - locally'){
+            steps {
+                script{
+                    bat 'docker build -t project3'
+                    bat 'bat "docker images"' 
+                    
         stage('build and push image') { 
             steps { 
                 script { 
