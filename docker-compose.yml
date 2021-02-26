@@ -12,6 +12,6 @@ services:
   mysql:
     image: "pymysql:lastest"
     build: .
-    port:
+    ports:
     - "5000:5000"
   
