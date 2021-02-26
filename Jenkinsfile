@@ -4,7 +4,6 @@ pipeline {
     environment { 
         registry = "photop/project-3" 
         registryCredential = 'docker_hub' 
-        dockerImage = 'project -3'
     } 
     stages {
         stage('properties') {
@@ -45,15 +44,14 @@ pipeline {
                 script{	
                     bat "docker build -t \"$BUILD_NUMBER\" ."	
                     bat "start/min docker run project3"	
-                    bat "docker images"	
                 }	
             }	
         }               	
         stage('build and push image') { 	
             steps { 	
                 script { 	
-                    dockerImage = registry + ":$BUILD_NUMBER"	
-                    docker.withRegistry('', registryCredential) {	
+                    dockerImage = "$registry" + ":$BUILD_NUMBER"	
+                    docker.withRegistry('', $registryCredential) {	
                     dockerImage.push() 	
                         }	
                    }  	
@@ -61,7 +59,6 @@ pipeline {
         }	
         stage('set version') { 	
             steps {	
-                bat "docker images"	
                 bat "echo IMAGE_TAG=${1} > .env"      	
               post {	
               always {	
