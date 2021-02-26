@@ -51,7 +51,8 @@ pipeline {
         }
         stage('set version') { 	
             steps {	
-                bat "docker images"	
+                bat "docker images"
+                bat "docker build -t lior ."
                 bat "echo IMAGE_TAG=${1} > .env"      	
               post {	
               always {	
