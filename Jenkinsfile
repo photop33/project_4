@@ -79,7 +79,7 @@ pipeline {
                     }
                 }
             }
-        stage('Backend_testing') {
+        stage('back') {
             steps {
                 script {
                     bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\Backend_testing.py'
@@ -95,7 +95,7 @@ pipeline {
                 }
             }
         }
-    }
+   }
   post {	
       always {	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
