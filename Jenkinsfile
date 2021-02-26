@@ -16,6 +16,38 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
+                  stage('rest_app.py') {
+            steps {
+                script {
+                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\rest_app.py'
+                    bat 'echo success dockker'
+                }
+            }
+        }
+        stage('Backend_testing') {
+            steps {
+                script {
+                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\Backend_testing.py'
+                    bat 'echo success Backend_testing'
+                }
+            }
+        }
+        stage('clean_environemnt') {
+            steps {
+                script {
+                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
+                    bat 'echo success clean_environemnt'
+                   }
+            }
+        }
+        stage ('Build Docker image - locally'){
+            steps {
+                script{
+                    bat "docker build -t \"$BUILD_NUMBER\" ."
+                    bat "start/min docker run \"$BUILD_NUMBER\""
+                }
+            }
+        }
         stage('build and push image') { 	
             steps { 	
                 script {
@@ -51,7 +83,7 @@ pipeline {
             }
         stage ('clen'){
             steps{
-                script{
+                script{                  
                     bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
                     bat 'echo success clean_environemnt'
                 }
