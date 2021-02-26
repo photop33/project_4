@@ -43,7 +43,7 @@ pipeline {
                 }	
             }	
         }               	
-                    environment { 
+        environment { 
                     registry = "photop/project-3" 
                     registryCredential = 'docker_hub' 
                     dockerImage = 'project -3'
