@@ -15,21 +15,13 @@ pipeline {
                 }
                 git 'https://github.com/photop33/project3.git'
             }
-        }        
-        stage ('Build Docker image - locally'){	
-            steps {	
-                script{	
-                    bat "docker build -t \"$BUILD_NUMBER\" ."	
-                    bat "start/min docker run \"$BUILD_NUMBER\""	
-                }	
-            }	
-        }               	
+        }                    
         stage('build and push image') { 	
             steps { 	
                 script {
                     bat "echo ${registry}:${BUILD_NUMBER}"
                     $dockerImage = docker.build "$registry" + ":$BUILD_NUMBER"
-                    bat "echo dockerImage"
+                    bat "echo ${dockerImage}"
                     //docker.withRegistry('', registryCredential) {	
                     //dockerImage.push() 	
                     //}	
