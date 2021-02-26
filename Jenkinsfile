@@ -43,13 +43,14 @@ pipeline {
                 }	
             }	
         }               	
-        stage('build and push image') { 	
-            steps { 	
-                script { 
                     environment { 
                     registry = "photop/project-3" 
                     registryCredential = 'docker_hub' 
                     dockerImage = 'project -3'
+                    }
+        stage('build and push image') { 	
+            steps { 	
+                script { 
                     dockerImage = "project-3" + "${1}"	
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
