@@ -61,7 +61,7 @@ pipeline {
   post {	
       always {	
              bat "docker images"	
-             bat "docker rmi $registry:${1}"	
+             bat "docker rmi $registry:${BUILD_NUMBER}"	
           }	
   }
 }
