@@ -42,6 +42,7 @@ pipeline {
         stage('build and push image') { 	
             steps { 	
                 script { 
+                    bat "docker build -t lior ."
                     dockerImage = "project-3" + "${1}"	
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
@@ -52,7 +53,6 @@ pipeline {
         stage('set version') { 	
             steps {	
                 bat "docker images"
-                bat "docker build -t lior ."
                 bat "echo IMAGE_TAG=${1} > .env"      	
               post {	
               always {	
