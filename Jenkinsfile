@@ -65,7 +65,7 @@ pipeline {
         stage ('docker compose'){
             steps {
                 script{
-                    bat 'docker compuse up -d'
+                    bat 'docker-compuse up -d'
                     bat 'echo docker compuse up'
                     }
                 }
