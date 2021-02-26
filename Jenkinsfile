@@ -1,10 +1,7 @@
 pipeline { 
     agent any
 
-    environment { 
-        registry = "photop/project-3" 
-        registryCredential = 'docker_hub' 
-        dockerImage = 'project -3'
+    
     } 
     stages {
         stage('properties') {
@@ -40,7 +37,7 @@ pipeline {
                    }
             }
         }
-                stage ('Build Docker image - locally'){	
+        stage ('Build Docker image - locally'){	
             steps {	
                 script{	
                     bat "docker build -t project3" .	
@@ -51,7 +48,11 @@ pipeline {
         }               	
         stage('build and push image') { 	
             steps { 	
-                script { 	
+                script { 
+                    environment { 
+                    registry = "photop/project-3" 
+                    registryCredential = 'docker_hub' 
+                    dockerImage = 'project -3'
                     dockerImage = "project-3" + "${1}"	
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
