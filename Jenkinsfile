@@ -14,32 +14,8 @@ pipeline {
                 }
                 git 'https://github.com/photop33/project3.git'
             }
-        }     
-        stage('rest_app.py') {
-            steps {
-                script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\rest_app.py'
-                    bat 'echo success dockker'
-                }
-            }
-        }
-        stage('Backend_testing') {
-            steps {
-                script {
-                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\Backend_testing.py'
-                    bat 'echo success Backend_testing'
-                }
-            }
-        }
-        stage('clean_environemnt') {
-            steps {
-                script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
-                    bat 'echo success clean_environemnt'
-                   }
-            }
-        }
-                stage ('Build Docker image - locally'){	
+        }        
+        stage ('Build Docker image - locally'){	
             steps {	
                 script{	
                     bat "docker build -t \"$BUILD_NUMBER\" ."	
@@ -50,7 +26,8 @@ pipeline {
         stage('build and push image') { 	
             steps { 	
                 script { 	
-                    dockerImage = "${registry}" + ":$BUILD_NUMBER"	
+                    dockerImage = ${registry} + ":$BUILD_NUMBER"
+                    bat "echo ${dockerImage}"
                     docker.withRegistry('', registryCredential) {	
                     dockerImage.push() 	
                         }	
@@ -59,7 +36,7 @@ pipeline {
         }	
         stage('set version') { 	
             steps {	
-                bat "echo IMAGE_TAG=${$BUILD_NUMBER} > .env"      	
+                bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"      	
               post {	
               always {	
                      bat "docker images"	
