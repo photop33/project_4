@@ -90,7 +90,6 @@ pipeline {
     }
   post {	
       always {	
-             bat "docker images"	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
           }	
   }
