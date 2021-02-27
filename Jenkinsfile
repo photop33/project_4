@@ -84,7 +84,7 @@ pipeline {
                 script{
                 bat 'docker-compose down' 
                 bat 'docker images'
-                bat 'docker image rm {BUILD_NUMBER}'
+                bat 'docker image rm ${BUILD_NUMBER}'
                 }
             }
         }     
