@@ -44,7 +44,7 @@ pipeline {
             steps {
                 script{
                     bat "docker build -t \"$BUILD_NUMBER\" ."
-                    bat "start/min docker run \"$BUILD_NUMBER\""
+                    bat "start/min docker run -p 80:8000 \"$BUILD_NUMBER\""
                 }
             }
         }
