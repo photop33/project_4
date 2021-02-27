@@ -61,7 +61,7 @@ pipeline {
         stage('set version') { 	
             steps {	
                 bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"   
-                bat 'bat "more .env"'
+                bat 'more .env'
             }	
          }
         stage ('docker'){
