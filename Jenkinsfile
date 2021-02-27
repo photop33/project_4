@@ -82,16 +82,13 @@ pipeline {
         stage('turn off docker') { 
             steps {
                 script{
-                bat 'docker-compose down' 
-                bat 'docker images'
-                bat 'docker image rm ${BUILD_NUMBER}'
+                bat 'docker-compose down --rmi local' 
                 }
             }
         }     
         stage ('clen'){
             steps{
                 script{                  
-                    bat 'docker-compose down --rmi local'
                     bat 'echo success clean_environemnt'
                 }
             }
