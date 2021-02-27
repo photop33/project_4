@@ -83,7 +83,7 @@ pipeline {
             steps {
                 script{
                 bat 'docker-compose down' 
-                bat 'docker rm '${BUILD_NUMBER} >'
+                bat 'docker rm '${BUILD_NUMBER}'
                 }
             }
         }     
