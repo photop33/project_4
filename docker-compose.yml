@@ -2,6 +2,7 @@ version: '3'
 services:
   project:
     build: .
+    image: photop/project-3:${IMAGE_TAG}
     ports:
      - "4999:5000"
 
