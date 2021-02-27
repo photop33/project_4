@@ -92,7 +92,6 @@ pipeline {
             steps{
                 script{                  
                     bat 'echo success clean_environemnt'
-                    bat 'docker images'
                 }
             }
         }
@@ -100,6 +99,7 @@ pipeline {
   post {	
       always {	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
+             bat 'docker images'
           }	
   }
 }
