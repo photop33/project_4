@@ -80,10 +80,9 @@ pipeline {
                     }
                 }
             }
-        stage('turn off docker') { 
+        stage('docker-compose down') { 
             steps {
                 script{
-                bat 'docker images'
                 bat 'docker-compose down --rmi local' 
                 }
             }
@@ -92,6 +91,7 @@ pipeline {
             steps{
                 script{                  
                     bat 'echo success clean_environemnt'
+                    bat "echo ${BUILD_NUMBER}"      		
                 }
             }
         }
@@ -99,7 +99,6 @@ pipeline {
   post {	
       always {	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
-             bat 'docker images'
           }	
   }
 }
