@@ -66,6 +66,7 @@ pipeline {
         stage ('docker compose'){
             steps {
                 script{
+                    bat 'docker images'
                     bat 'docker-compose up -d'
                     bat 'echo docker compuse up'
                     }
@@ -82,6 +83,7 @@ pipeline {
         stage('turn off docker') { 
             steps {
                 script{
+                bat 'docker images'
                 bat 'docker-compose down --rmi local' 
                 }
             }
@@ -90,6 +92,7 @@ pipeline {
             steps{
                 script{                  
                     bat 'echo success clean_environemnt'
+                    bat 'docker images'
                 }
             }
         }
