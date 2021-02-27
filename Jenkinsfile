@@ -79,6 +79,14 @@ pipeline {
                     }
                 }
             }
+        stage('turn off docker') { 
+            steps {
+                script{
+                bat 'docker-compose down' 
+                bat 'docker rm '${BUILD_NUMBER} >'
+                }
+            }
+        }     
         stage ('clen'){
             steps{
                 script{                  
