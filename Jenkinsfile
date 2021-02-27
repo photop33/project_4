@@ -66,6 +66,7 @@ pipeline {
         stage ('docker compose'){
             steps {
                 script{
+                   //bat 'docker-compose up -d'
                     bat 'start /min python rest_app.py'
                     }
                 }
