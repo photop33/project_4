@@ -3,7 +3,7 @@ services:
   project:
     build: .
     ports:
-     - "5001:5001"
+     - "5001:4999"
 
   mysql-db:
     image: mysql:8.0
