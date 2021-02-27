@@ -63,14 +63,6 @@ pipeline {
                 bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"      		
             }	
          }
-        stage ('docker compose'){
-            steps {
-                script{
-                    bat 'docker-compose up -d'
-                    bat 'start /min python rest_app.py'
-                    }
-                }
-           }       
         stage ('docker_backend_testing'){
             steps{
                 script{
