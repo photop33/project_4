@@ -2,7 +2,7 @@ version: '3'
 services:
   project:
     build: .
-    image: 
+    image: photop/project-3:${BUILD_NUMBER}
     ports:
      - "5000:5000"
 
