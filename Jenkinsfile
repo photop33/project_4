@@ -80,10 +80,11 @@ pipeline {
                     }
                 }
             }
-        stage('docker-compose down') { 
+        stage('docker-compose down & delete image') { 
             steps {
                 script{
-                bat 'docker-compose down --rmi local' 
+                bat "docker image rm  ${BUILD_NUMBER}"      		
+                bat 'docker-compose down ' 
                 }
             }
         }     
@@ -91,7 +92,6 @@ pipeline {
             steps{
                 script{                  
                     bat 'echo success clean_environemnt'
-                    bat "echo ${BUILD_NUMBER}"      		
                 }
             }
         }
