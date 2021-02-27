@@ -1,5 +1,6 @@
 import requests
 import pymysql
+import db_connector
 user_id= "8"
 user_name='lior'
 
@@ -13,13 +14,5 @@ if res.ok:
 
 
     
-
-conn = pymysql.connect(host='remotemysql.com', port=3306, user='Q2PbjAC1nT', passwd='WRYn22HLYY', db='Q2PbjAC1nT')
-conn.autocommit(True)
-cursor = conn.cursor()
-x=cursor.execute("SELECT * FROM Q2PbjAC1nT.users WHERE user_id;")
-if x==user_id:
-    y = cursor.fetchall()
-    user_name = y[0]
-    print (user_name)
-    
+x=get_users(user_id)
+print (x)
