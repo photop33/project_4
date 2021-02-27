@@ -27,7 +27,7 @@ pipeline {
         stage('Backend_testing') {
             steps {
                 script {
-                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\Backend_testing.py'
+                    bat 'python3 Backend_testing.py'
                     bat 'echo success Backend_testing'
                 }
             }
@@ -35,7 +35,7 @@ pipeline {
         stage('clean_environemnt') {
             steps {
                 script {
-                    bat 'start/min python3 C:\\Users\\l1313\\PycharmProjects\\3\\clean_environemnt.py'
+                    bat 'start/min python3 clean_environemnt.py'
                     bat 'echo success clean_environemnt'
                    }
             }
@@ -74,7 +74,7 @@ pipeline {
         stage ('docker_backend_testing'){
             steps{
                 script{
-                    bat 'python3 C:\\Users\\l1313\\PycharmProjects\\3\\docker_backend_testing.py'
+                    bat 'python3 docker_backend_testing.py'
                     bat 'echo success docker_backend_testing.py'
                     }
                 }
