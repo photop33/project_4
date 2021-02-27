@@ -66,7 +66,6 @@ pipeline {
         stage ('docker compose'){
             steps {
                 script{
-                    bat 'docker images'
                     bat 'docker-compose up -d'
                     bat 'echo docker compuse up'
                     }
@@ -85,17 +84,10 @@ pipeline {
                 script{
                 bat "docker image rm  ${BUILD_NUMBER}"      		
                 bat 'docker-compose down ' 
+                bat 'docker-compose down & delete image'
                 }
             }
         }     
-        stage ('clen'){
-            steps{
-                script{                  
-                    bat 'echo success clean_environemnt'
-                    bat 'docker images'
-                }
-            }
-        }
    }
   post {	
       always {	
