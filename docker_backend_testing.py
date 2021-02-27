@@ -5,11 +5,11 @@ user_id = "8"
 
     
 
-res = requests.get('http://127.0.0.1:4009/user/'+ user_id  +'')
+res = requests.get('http://127.0.0.1:4999/user/'+ user_id  +'')
 if res.ok:
     print(res.json())
 
-res = requests.get('http://127.0.0.1:5002/user/'+ user_id  +'')
+res = requests.get('http://127.0.0.1:4999/user/'+ user_id  +'')
 if res.ok:
     print(res.json())
 
