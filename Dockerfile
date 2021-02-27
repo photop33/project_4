@@ -3,4 +3,4 @@ COPY rest_app.py /
 ADD requirements.txt /
 RUN pip install -r requirements.txt
 CMD [ "python", "./rest_app.py" ]
-EXPOSE 4999
+EXPOSE 5000
