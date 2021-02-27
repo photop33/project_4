@@ -1,6 +1,4 @@
 FROM python:3
 COPY rest_app.py /
-RUN pip install requests
-RUN pip install flask
-RUN pip install pymysql
+RUN pip install -r requirements.txt
 CMD [ "python", "./rest_app.py" ]
