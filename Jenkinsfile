@@ -92,6 +92,7 @@ pipeline {
             steps{
                 script{                  
                     bat 'echo success clean_environemnt'
+                    bat 'docker images'
                 }
             }
         }
