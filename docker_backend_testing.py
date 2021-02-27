@@ -5,13 +5,10 @@ user_id = "8"
 
     
 
-res = requests.get('http://127.0.0.1:4999/user/'+ user_id  +'')
+res = requests.get('http://127.0.0.1:5000/user/'+ user_id  +'')
 if res.ok:
     print(res.json())
 
-res = requests.get('http://127.0.0.1:4999/user/'+ user_id  +'')
-if res.ok:
-    print(res.json())
 
     
 conn = pymysql.connect(host='remotemysql.com', port=3306, user='Q2PbjAC1nT', passwd='WRYn22HLYY', db='Q2PbjAC1nT')
