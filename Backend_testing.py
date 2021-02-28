@@ -3,7 +3,7 @@ user_id= "1"
 user_name= 'Daniel'
 
 
-res = requests.post('http::///127.0.0.1:5000/user/'+ user_id +'', json={"user_name": ""+ user_name +""})
+res = requests.post('http://127.0.0.1:5000/user/'+ user_id +'', json={"user_name": ""+ user_name +""})
 if res.ok:
     print(res.json())
     
