@@ -86,6 +86,7 @@ pipeline {
                 bat 'docker-compose down '
                 bat "docker image rm  ${BUILD_NUMBER}"      		
                 bat 'echo docker-compose down + delete image'
+		bat 'start/min python3 clean_environemnt.py'
                 }
             }
         }     
