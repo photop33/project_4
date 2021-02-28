@@ -4,7 +4,9 @@ services:
     build: .
     image: photop/project-3:${IMAGE_TAG}
     ports:
-     - "5000:4999"
+     - "5000:5000"
+    depends_on:
+      - "mysql-db"
 
   mysql-db:
     image: mysql:8.0
