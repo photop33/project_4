@@ -89,7 +89,15 @@ pipeline {
 		bat 'start/min python3 clean_environemnt.py'
                 }
             }
-        }     
+        }  
+	stage ('Deploy HELM'){
+            steps{
+                script{
+                    bat 'kubectl apply -f deploy.yaml -f service.yaml'
+                    bat 'echo success HELM.py'
+                    }
+                }
+            }
    }
   post {	
       always {	
