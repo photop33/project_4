@@ -5,7 +5,8 @@ metadata:
 spec:
   replicas: {{ .Values.replicaCount }}
   selector:
-      app: hello-python3
+    matchLabels:
+      app: hello-python3    
   template:
     metadata:
       {{- with .Values.podAnnotations }}
