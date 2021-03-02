@@ -7,6 +7,6 @@ spec:
       app: hello-python3
   type: LoadBalancer
   ports:
-    - port: {{ .Values.service.port }}
+    - port: 80
       targetPort: 5000
       protocol: "TCP"
