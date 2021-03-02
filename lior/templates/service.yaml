@@ -5,7 +5,7 @@ metadata:
 spec:
   selector:
       app: hello-python3
-  type: {{ .Values.service.type }}
+  type: LoadBalancer
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 5000
