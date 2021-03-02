@@ -1,34 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test1
+  name: hello-python3
 spec:
-  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      app: hello-python3    
+      app: hello-python3
+  replicas: 4
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
         app: hello-python3
     spec:
-      {{- with .Values.imagePullSecrets }}
-      imagePullSecrets: Always
-      serviceAccountName: {{ include "lior.serviceAccountName" . }}
-      securityContext:
-        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
-        - name: {{ .Chart.Name }}
-          securityContext:
-            {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: Always
-          ports:
-            - name: http
-              containerPort: 5000
-              protocol: TCP
-         
+      - name: hello-python3
+        image: dgotlieb/pyrandom:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
