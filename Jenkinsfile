@@ -93,7 +93,8 @@ pipeline {
 	stage ('Deploy HELM'){
             steps{
                 script{
-                    bat 'kubectl apply -f deploy.yaml -f service.yaml'
+                    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/deployment.yaml'
+	            bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/service.yaml'
                     bat 'echo success HELM.py'
                     }
                 }
