@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-python3
+spec:
+  selector:
+    matchLabels:
+      app: hello-python3
+  replicas: 4
+  template:
+    metadata:
+      labels:
+        app: hello-python3
+    spec:
+      containers:
+      - name: hello-python3
+        image: 385:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5000
