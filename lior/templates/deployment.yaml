@@ -17,4 +17,4 @@ spec:
         image: "photop/project-3:427"
         imagePullPolicy: Always
         ports:
-        - containerPort: 5000
+        - containerPort: 6000
