@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: hello-python3
-  replicas: 4
+  replicas: 5
   template:
     metadata:
       labels:
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-python3
-        image: photop/project-3:389
+        image: photop/project-3:${BUILD_NUMBER}
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
