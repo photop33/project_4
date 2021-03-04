@@ -100,11 +100,17 @@ pipeline {
 		    }  
                 }
             }
-	stage ('Deploy k8s_url'){
+	stage ('k8s_url'){
 	    steps{
                 script{
-		    bat 'start/min minikube service hello-python-service --url'
 		    bat 'minikube service hello-python-service –url > k8s_url.txt'
+		   }
+                }
+	    }
+	stage ('K8S_backend_testing.py'){
+	    steps{
+                script{
+		    bat 'K8S_backend_testing.py'
 		   }
                 }
 	    }
