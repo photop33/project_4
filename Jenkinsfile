@@ -95,7 +95,7 @@ pipeline {
                 script{
                     bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/deployment.yaml'
 	            bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/service.yaml'
-                    bat 'echo success HELM.py'
+                    bat 'echo succes HELM.py'
                     }
                 }
             }
