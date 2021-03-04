@@ -100,7 +100,7 @@ pipeline {
 		    }  
                 }
             }
-	stage ('Deploy HELM'){
+	stage ('Deploy k8s_url'){
 	    steps{
                 script{
 		    bat 'start/min minikube service hello-python-service --url'
