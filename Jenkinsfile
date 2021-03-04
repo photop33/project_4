@@ -4,8 +4,18 @@ pipeline {
         registry = "photop/project-3" 
         registryCredential = 'docker_hub'
         dockerImage = ""
-    }
-        stage('rest_app.py') {
+    } 
+    stages {
+        stage('properties') {
+            steps {
+                script {
+                    properties([pipelineTriggers([pollSCM('*/30 * * * *')])])
+                    properties([buildDiscarder(logRotator(daysToKeepStr: '5', numToKeepStr: '20')),])
+                }
+                git 'https://github.com/photop33/project3.git'
+            }
+        }
+                  stage('rest_app.py') {
             steps {
                 script {
                     bat 'start /min python rest_app.py'
@@ -37,18 +47,7 @@ pipeline {
                 }
             }
         }
-        
-    stages {
-        stage('properties') {
-            steps {
-                script {
-                    properties([pipelineTriggers([pollSCM('*/30 * * * *')])])
-                    properties([buildDiscarder(logRotator(daysToKeepStr: '5', numToKeepStr: '20')),])
-                }
-                git 'https://github.com/photop33/project3.git'
-            }
-        }
-	    stage('build and push image') { 	
+        stage('build and push image') { 	
             steps { 	
                 script {
                     dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -90,7 +89,7 @@ pipeline {
                 }
             }
         }  
-        stage ('Deploy HELM'){
+	stage ('Deploy HELM'){
             steps{
                 script{
 		    bat 'minikube start'
@@ -102,7 +101,7 @@ pipeline {
                     }
                 }
             }
-        } 
+        }
   post {	
       always {	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
