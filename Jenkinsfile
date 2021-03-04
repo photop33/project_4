@@ -5,7 +5,40 @@ pipeline {
         registry = "photop/project-3" 
         registryCredential = 'docker_hub'
         dockerImage = ""
-    } 
+    }
+        stage('rest_app.py') {
+            steps {
+                script {
+                    bat 'start /min python rest_app.py'
+                    bat 'echo success dockker'
+                }
+            }
+        }
+        stage('Backend_testing') {
+            steps {
+                script {
+                    bat 'python3 Backend_testing.py'
+                    bat 'echo success Backend_testing'
+                }
+            }
+        }
+        stage('clean_environemnt') {
+            steps {
+                script {
+                    bat 'start/min python3 clean_environemnt.py'
+                    bat 'echo success clean_environemnt'
+                   }
+            }
+        }
+        stage ('Build Docker image - locally'){
+            steps {
+                script{
+                    bat "docker build -t \"$BUILD_NUMBER\" ."
+                    bat "start/min docker run \"$BUILD_NUMBER\""
+                }
+            }
+        }
+        
     stages {
         stage('properties') {
             steps {
