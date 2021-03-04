@@ -1,383 +1,74 @@
-Started by user lior swisa
-Obtained Jenkinsfile from git https://github.com/photop33/Project3
-Running in Durability level: MAX_SURVIVABILITY
-[Pipeline] Start of Pipeline
-[Pipeline] node
-Running on Jenkins in C:\Users\l1313\.jenkins\workspace\Project-3
-[Pipeline] {
-[Pipeline] stage
-[Pipeline] { (Declarative: Checkout SCM)
-[Pipeline] checkout
-Selected Git installation does not exist. Using Default
-The recommended git tool is: NONE
-No credentials specified
- > git.exe rev-parse --is-inside-work-tree # timeout=10
-Fetching changes from the remote Git repository
- > git.exe config remote.origin.url https://github.com/photop33/Project3 # timeout=10
-Fetching upstream changes from https://github.com/photop33/Project3
- > git.exe --version # timeout=10
- > git --version # 'git version 2.30.0.windows.2'
- > git.exe fetch --tags --force --progress -- https://github.com/photop33/Project3 +refs/heads/*:refs/remotes/origin/* # timeout=10
- > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
-Checking out Revision a1d63414ac7d14a76466743339634de621c2f89d (refs/remotes/origin/master)
- > git.exe config core.sparsecheckout # timeout=10
- > git.exe checkout -f a1d63414ac7d14a76466743339634de621c2f89d # timeout=10
-Commit message: "Update Jenkinsfile"
- > git.exe rev-list --no-walk 6159f91ec50845fd4239d2211db0f8ff1b49c066 # timeout=10
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] stage
-[Pipeline] { (properties)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] properties
-[Pipeline] properties
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] git
-The recommended git tool is: NONE
-No credentials specified
- > git.exe rev-parse --is-inside-work-tree # timeout=10
-Fetching changes from the remote Git repository
- > git.exe config remote.origin.url https://github.com/photop33/project3.git # timeout=10
-Fetching upstream changes from https://github.com/photop33/project3.git
- > git.exe --version # timeout=10
- > git --version # 'git version 2.30.0.windows.2'
- > git.exe fetch --tags --force --progress -- https://github.com/photop33/project3.git +refs/heads/*:refs/remotes/origin/* # timeout=10
- > git.exe rev-parse "refs/remotes/origin/master^{commit}" # timeout=10
-Checking out Revision a1d63414ac7d14a76466743339634de621c2f89d (refs/remotes/origin/master)
- > git.exe config core.sparsecheckout # timeout=10
- > git.exe checkout -f a1d63414ac7d14a76466743339634de621c2f89d # timeout=10
- > git.exe branch -a -v --no-abbrev # timeout=10
- > git.exe branch -D master # timeout=10
- > git.exe checkout -b master a1d63414ac7d14a76466743339634de621c2f89d # timeout=10
-Commit message: "Update Jenkinsfile"
- > git.exe rev-list --no-walk 6159f91ec50845fd4239d2211db0f8ff1b49c066 # timeout=10
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (rest_app.py)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>start /min python rest_app.py 
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo success dockker 
-success dockker
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Backend_testing)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>python3 Backend_testing.py 
-{'status': 'ok', 'user added': 'Daniel', 'user id': '1'}
-{'status': 'ok', 'user name': 'Daniel'}
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo success Backend_testing 
-success Backend_testing
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (clean_environemnt)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>start/min python3 clean_environemnt.py 
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo success clean_environemnt 
-success clean_environemnt
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Build Docker image - locally)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker build -t "390" . 
-#1 [internal] load build definition from Dockerfile
-#1 sha256:d640f62a470b23cf1c1759e5611883664c9f115cd980037451525b8fde6970c8
-#1 transferring dockerfile: 32B done
-#1 DONE 0.0s
-
-#2 [internal] load .dockerignore
-#2 sha256:b26b63218d05411354c0e77160bc4f82a5f0e6e0943f7c70234cd7a71d8a6481
-#2 transferring context: 2B done
-#2 DONE 0.1s
-
-#3 [internal] load metadata for docker.io/library/python:3
-#3 sha256:659a837a58aa562a3c6a6b5c53816b5d57a6ee4f80575a2e3ee1f7e1a5483b44
-#3 DONE 0.0s
-
-#4 [1/4] FROM docker.io/library/python:3
-#4 sha256:c025c2da0d4d82d45d5f2a98b1f20c0a4531302b79db8d32af1dd6e94eee8fa3
-#4 DONE 0.0s
-
-#5 [internal] load build context
-#5 sha256:6ed7a2b9b1f541caddb8027e6516c014ec16c5f9db46fd3f166f6ecde496da9e
-#5 transferring context: 68B done
-#5 DONE 0.0s
-
-#6 [2/4] COPY rest_app.py /
-#6 sha256:6d29b7740a9d350feb4fc869f9c5ca6539fd445aebad9159ca076bb929b4569a
-#6 CACHED
-
-#7 [3/4] ADD requirements.txt /
-#7 sha256:fd66453661b42e7beadb1332203a665248440bc0cc4394b44ca2b2ef40038265
-#7 CACHED
-
-#8 [4/4] RUN pip install -r requirements.txt
-#8 sha256:de29ea48dba470bffecec1b650ad7934cb9cceb04f61b3f43e52dc87595be72e
-#8 CACHED
-
-#9 exporting to image
-#9 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
-#9 exporting layers done
-#9 writing image sha256:815288a36f6ada704c9a27e85af463be7ae24ddd427889b15a3558665f96bbcb
-#9 writing image sha256:815288a36f6ada704c9a27e85af463be7ae24ddd427889b15a3558665f96bbcb 0.0s done
-#9 naming to docker.io/library/390 0.0s done
-#9 DONE 0.1s
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>start/min docker run "390" 
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (build and push image)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] isUnix
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker build -t photop/project-3:390 . 
-#1 [internal] load build definition from Dockerfile
-#1 sha256:42457d2c1cc73399164760c54d938f90d128c93933834e668ed85121bb086bb8
-#1 transferring dockerfile: 32B done
-#1 DONE 0.0s
-
-#2 [internal] load .dockerignore
-#2 sha256:551208bb5dc3df1cb4754bf564e3cbe85096e93a7ff66287f924a7eeaddbdb13
-#2 transferring context: 2B done
-#2 DONE 0.1s
-
-#3 [internal] load metadata for docker.io/library/python:3
-#3 sha256:659a837a58aa562a3c6a6b5c53816b5d57a6ee4f80575a2e3ee1f7e1a5483b44
-#3 DONE 0.0s
-
-#4 [1/4] FROM docker.io/library/python:3
-#4 sha256:c025c2da0d4d82d45d5f2a98b1f20c0a4531302b79db8d32af1dd6e94eee8fa3
-#4 DONE 0.0s
-
-#5 [internal] load build context
-#5 sha256:d9e43dfb60593f74e3c592c6d0c20e4fd15f2c6026770be8030fb6924869b050
-#5 transferring context: 68B done
-#5 DONE 0.0s
-
-#6 [2/4] COPY rest_app.py /
-#6 sha256:1086b2bbe3300c4dc288b723d7e46866d38c44ef40ea55efbcd9f02643c916d0
-#6 CACHED
-
-#7 [3/4] ADD requirements.txt /
-#7 sha256:e6adca0387cae630916ff467257b48a57891266859936525e6208c2da7d12aa6
-#7 CACHED
-
-#8 [4/4] RUN pip install -r requirements.txt
-#8 sha256:30d53c1191c3d01b8fe601228390105c6110b102731280d3121719bea21a5f0f
-#8 CACHED
-
-#9 exporting to image
-#9 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
-#9 exporting layers done
-#9 writing image sha256:815288a36f6ada704c9a27e85af463be7ae24ddd427889b15a3558665f96bbcb
-#9 writing image sha256:815288a36f6ada704c9a27e85af463be7ae24ddd427889b15a3558665f96bbcb done
-#9 naming to docker.io/photop/project-3:390 done
-#9 DONE 0.1s
-[Pipeline] withEnv
-[Pipeline] {
-[Pipeline] withDockerRegistry
-Using the existing docker config file.Removing blacklisted property: authsRemoving blacklisted property: credsStore$ docker login -u photop -p ******** https://index.docker.io/v1/
-WARNING! Using --password via the CLI is insecure. Use --password-stdin.
-Login Succeeded
-[Pipeline] {
-[Pipeline] isUnix
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker tag photop/project-3:390 photop/project-3:390 
-[Pipeline] isUnix
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker push photop/project-3:390 
-The push refers to repository [docker.io/photop/project-3]
-d84bee9b841a: Preparing
-812212025b14: Preparing
-224e4f3a169b: Preparing
-7d999a918ae9: Preparing
-5b164865b353: Preparing
-302cf02dcc7c: Preparing
-e3d73f29c674: Preparing
-10bf86ff9f6a: Preparing
-da654bc8bc80: Preparing
-4ef81dc52d99: Preparing
-909e93c71745: Preparing
-7f03bfe4d6dc: Preparing
-10bf86ff9f6a: Waiting
-da654bc8bc80: Waiting
-4ef81dc52d99: Waiting
-909e93c71745: Waiting
-7f03bfe4d6dc: Waiting
-302cf02dcc7c: Waiting
-e3d73f29c674: Waiting
-812212025b14: Layer already exists
-224e4f3a169b: Layer already exists
-5b164865b353: Layer already exists
-7d999a918ae9: Layer already exists
-d84bee9b841a: Layer already exists
-e3d73f29c674: Layer already exists
-da654bc8bc80: Layer already exists
-4ef81dc52d99: Layer already exists
-10bf86ff9f6a: Layer already exists
-302cf02dcc7c: Layer already exists
-909e93c71745: Layer already exists
-7f03bfe4d6dc: Layer already exists
-390: digest: sha256:3345d8001f6544d18078e5c60d82df2bfa26584463f24cecb4c9adc7d42f74e4 size: 2842
-[Pipeline] }
-[Pipeline] // withDockerRegistry
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (set version)
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo IMAGE_TAG=390  1>.env 
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>more .env 
-IMAGE_TAG=390 
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (docker)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker-compose up -d 
-Creating network "project-3_default" with the default driver
-Found orphan containers (project-3_mysql_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Creating project-3_mysql-db_1 ... 
-
-[1A[2K
-Creating project-3_mysql-db_1 ... [32mdone[0m
-[1BCreating project-3_project_1  ... 
-
-[1A[2K
-Creating project-3_project_1  ... [32mdone[0m
-[1B
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo hellp 
-hellp
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (docker_backend_testing)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>python3 docker_backend_testing.py 
-{'status': 'ok', 'user name': 'Daniel'}
-1 1
-Daniel
-1 1
-Daniel
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo success docker_backend_testing.py 
-success docker_backend_testing.py
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (docker-compose down & delete image)
-[Pipeline] script
-[Pipeline] {
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker-compose down  
-Stopping project-3_project_1  ... 
-
-Stopping project-3_mysql-db_1 ... 
-
-[2A[2K
-Stopping project-3_project_1  ... [32mdone[0m
-[2B[1A[2K
-Stopping project-3_mysql-db_1 ... [32mdone[0m
-[1BFound orphan containers (project-3_mysql_1) for this project. If you removed or renamed this service in your compose file, you can run this command with the --remove-orphans flag to clean it up.
-Removing project-3_project_1  ... 
-
-Removing project-3_mysql-db_1 ... 
-
-[2A[2K
-Removing project-3_project_1  ... [32mdone[0m
-[2B[1A[2K
-Removing project-3_mysql-db_1 ... [32mdone[0m
-[1BRemoving network project-3_default
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker image rm  390 
-Untagged: 390:latest
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>echo docker-compose down + delete image 
-docker-compose down + delete image
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>start/min python3 clean_environemnt.py 
-[Pipeline] }
-[Pipeline] // script
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] stage
-[Pipeline] { (Declarative: Post Actions)
-[Pipeline] bat
-
-C:\Users\l1313\.jenkins\workspace\Project-3>docker rmi photop/project-3:390 
-Untagged: photop/project-3:390
-Untagged: photop/project-3@sha256:3345d8001f6544d18078e5c60d82df2bfa26584463f24cecb4c9adc7d42f74e4
-[Pipeline] }
-[Pipeline] // stage
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // withEnv
-[Pipeline] }
-[Pipeline] // node
-[Pipeline] End of Pipeline
+stage('rest_app.py') {
+            steps {
+                script {
+                    bat 'start /min python rest_app.py'
+                    bat 'echo success dockker'
+                }
+            }
+        }
+        stage('Backend_testing') {
+            steps {
+                script {
+                    bat 'python3 Backend_testing.py'
+                    bat 'echo success Backend_testing'
+                }
+            }
+        }
+        stage('clean_environemnt') {
+            steps {
+                script {
+                    bat 'start/min python3 clean_environemnt.py'
+                    bat 'echo success clean_environemnt'
+                   }
+            }
+        }
+        stage ('Build Docker image - locally'){
+            steps {
+                script{
+                    bat "docker build -t \"$BUILD_NUMBER\" ."
+                    bat "start/min docker run \"$BUILD_NUMBER\""
+                }
+            }
+        }
+        stage('build and push image') { 	
+            steps { 	
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    docker.withRegistry('', registryCredential) {	
+                    dockerImage.push() 	
+                    }	
+                }  	
+            }	
+        }	
+        stage('set version') { 	
+            steps {	
+                bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"   
+			    bat "more .env"
+            }	
+         }
+        stage ('docker'){
+            steps {
+                script{
+                    bat 'docker-compose up -d'
+                    bat 'echo hellp'
+                    }
+                }
+           }       
+        stage ('docker_backend_testing'){
+            steps{
+                script{
+                    bat 'python3 docker_backend_testing.py'
+                    bat 'echo success docker_backend_testing.py'
+                    }
+                }
+            }
+        stage('docker-compose down & delete image') { 
+            steps {
+                script{
+                bat 'docker-compose down '
+                bat "docker image rm  ${BUILD_NUMBER}"      		
+                bat 'echo docker-compose down + delete image'
+		bat 'start/min python3 clean_environemnt.py'
+                }
+            }
+        }  
