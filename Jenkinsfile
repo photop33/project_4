@@ -16,7 +16,49 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-        	stage ('Deploy HELM'){
+	    stage('build and push image') { 	
+            steps { 	
+                script {
+                    dockerImage = docker.build registry + ":$BUILD_NUMBER"
+                    docker.withRegistry('', registryCredential) {	
+                    dockerImage.push() 	
+                    }	
+                }  	
+            }	
+        }	
+        stage('set version') { 	
+            steps {	
+                bat "echo IMAGE_TAG=${BUILD_NUMBER} > .env"   
+			    bat "more .env"
+            }	
+         }
+        stage ('docker'){
+            steps {
+                script{
+                    bat 'docker-compose up -d'
+                    bat 'echo hellp'
+                    }
+                }
+           }       
+        stage ('docker_backend_testing'){
+            steps{
+                script{
+                    bat 'python3 docker_backend_testing.py'
+                    bat 'echo success docker_backend_testing.py'
+                    }
+                }
+            }
+        stage('docker-compose down & delete image') { 
+            steps {
+                script{
+                bat 'docker-compose down '
+                bat "docker image rm  ${BUILD_NUMBER}"      		
+                bat 'echo docker-compose down + delete image'
+		bat 'start/min python3 clean_environemnt.py'
+                }
+            }
+        }  
+        stage ('Deploy HELM'){
             steps{
                 script{
 		    bat 'minikube start'
