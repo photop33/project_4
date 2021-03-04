@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: hello-python3
-        image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+        image: "photop/project-3:1"
         imagePullPolicy: Always
         ports:
         - containerPort: 5000
