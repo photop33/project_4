@@ -9,7 +9,7 @@ spec:
       volumeMounts:
         # name must match the volume name below
         - name: secret-volume
-          mountPath: /etc/secret-volume
+          mountPath: C:\Users\l1313\Desktop\jankins>
   # The secret data is exposed to Containers in the Pod through a Volume.
   volumes:
     - name: secret-volume
