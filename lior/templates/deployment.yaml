@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: hello-python3
-  replicas: 5
+  replicas: {{ lior.templates.Values.replicaCount }}
   template:
     metadata:
       labels:
