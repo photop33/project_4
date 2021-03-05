@@ -116,8 +116,6 @@ pipeline {
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
 	            bat 'kubectl get pod secret-test-pod'
 		    bat 'echo MWYyZDFlMmU2N2Rm | base64 --decode'
-'
-
 		   }
                 }
 	    }   
