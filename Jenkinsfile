@@ -112,10 +112,11 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{
+		    bat 'kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt'
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
 	            bat 'kubectl get pod secret-test-pod'
-		    bat 'dir C:\tmp'
-		    bat 'echo username'
+		    bat 'echo MWYyZDFlMmU2N2Rm | base64 --decode'
+'
 
 		   }
                 }
