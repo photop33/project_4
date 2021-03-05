@@ -1,1 +1,7 @@
-echo -n 'admin'
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mariadb-root-password
+type: Opaque
+data:
+  password: S3ViZXJuZXRlc1JvY2tzIQ==
