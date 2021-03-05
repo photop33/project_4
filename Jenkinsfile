@@ -119,7 +119,7 @@ pipeline {
 			--docker-username=lior \
 			--docker-password=pass113 \
 			--docker-email=lsphoto20@gmail.com'
-		    bat 'kubectl describe secrets'
+		    bat 'kubectl describe secrets/secret-envars-test-pod'
 		    bat 'echo succes secret/secret-envars-test-pod'
 		   }
                 } 
