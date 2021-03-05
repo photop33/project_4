@@ -114,7 +114,6 @@ pipeline {
                 script{ 
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
 	            bat 'kubectl get pod secret-envars-test-pod'
-		    bat 'kubectl get secret mysecret -o yaml' 	
 		   }
                 } 
 
@@ -122,7 +121,7 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{ 
-
+		   bat 'kubectl get secret mysecret -o yaml' 	
 		   }
                 }
 	    }   
