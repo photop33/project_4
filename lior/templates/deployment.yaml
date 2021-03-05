@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: hello-python3
-  replicas: {{ lior/values.yaml }}
+  replicas: 5
   template:
     metadata:
       labels:
