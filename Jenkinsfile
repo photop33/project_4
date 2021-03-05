@@ -112,7 +112,7 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{ 
-		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
+		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/secret.yaml'
 	            bat 'kubectl get pod secret-test-pod'
 		    bat ' kubectl create secret generic test-secret --from-literal=username="my-app" --from-literal=password="39528$vdg7Jb"'	
 		    bat 'echo MWYyZDFlMmU2N2Rm | base64 --decode'
