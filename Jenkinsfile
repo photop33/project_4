@@ -31,14 +31,15 @@ pipeline {
                 }
             }
         }
-        stage('clean_environemnt-1') {
+	stage('clean_environemnt-1') {
             steps {
                 script {
                     bat 'start/min python3 clean_environemnt.py'
                     bat 'echo success clean_environemnt-1'
                  }
             }
-        }
+        }    
+
         stage ('Build Docker image - locally'){
             steps {
                 script{
@@ -108,6 +109,15 @@ pipeline {
 		    }  
                 }
             }
+	stage ('extra.py'){
+	    steps{
+                script{
+		    bat 'echo $SECRET_USERNAME'
+		    bat 'python3 succes K8S_backend_testing.py'
+	
+		   }
+                }
+	    }   
 	stage ('K8S_backend_testing.py'){
 	    steps{
                 script{
