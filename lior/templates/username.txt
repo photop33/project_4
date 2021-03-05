@@ -1,8 +1,10 @@
 apiVersion: v1
 kind: Secret
 metadata:
-  name: secret-basic-auth
-type: kubernetes.io/basic-auth
+  name: mysecret
+type: Opaque
 stringData:
-  username: admin
-  password: t0p-Secret
+  config.yaml: |
+    apiUrl: "https://localhost:5500/user/1"
+    username: lior
+    password: 1234
