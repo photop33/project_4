@@ -112,7 +112,7 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{
-		    bat 'kubectl apply -f kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
+		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
 	            bat 'kubectl get pod secret-test-pod'
 		    bat 'kubectl exec -i -t secret-test-pod -- /bin/bash'	
 		    bat 'ls /etc/secret-volume'
