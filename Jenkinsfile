@@ -114,7 +114,7 @@ pipeline {
                 script{ 
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/secret.yaml'
 	            bat ' kubectl get pod secret-envars-test-pod'
-		    bat ' kubectl describe secret secret-envars-test-pod'	
+		    bat 'kubectl exec -i -t env-single-secret -- /bin/sh -c 'echo $SECRET_USERNAME''	
 		    bat 'printenv'
 		   }
                 }
