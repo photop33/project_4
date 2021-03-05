@@ -109,12 +109,12 @@ pipeline {
 		    }  
                 }
             }
-	stage ('extra-map'){
+	stage ('extra-secret'){
 	    steps{
                 script{ 
-		    bat 'kubectl create secret generic sample-db-secret --from-literal=username=admin --from-literal=password=’7f3,F9D^LJz37]!W’'
+		    //bat 'kubectl create secret generic sample-db-secret --from-literal=username=admin --from-literal=password=’7f3,F9D^LJz37]!W’'
+		    bat 'kubectl create secret generic db-user-pass --from-file=https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt --from-file=https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/password.txt'
 		    bat 'kubectl get pod secret-envars-test-pod'
-		    bat 'kubectl exec -i -t env-single-secret -- /bin/sh -c "echo $SECRET_USERNAME"'	
 		   }
                 } 
 
