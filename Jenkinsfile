@@ -117,11 +117,7 @@ pipeline {
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt'
 		    bat 'kubectl get secret mysecret -o yaml'
 		    bat 'kubectl get pod secret-envars-test-pod'
-		    bat 'kubectl create secret docker-registry secret-tiger-docker \
-			--docker-username=lior \
-			--docker-password=pass113 \
-			--docker-email=lsphoto20@gmail.com'
-		    bat 'echo succes secret/secret-envars-test-pod'
+		    bat 'echo succes secret'
 		   }
                 } 
 
