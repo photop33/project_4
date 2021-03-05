@@ -113,7 +113,7 @@ pipeline {
 	    steps{
                 script{ 
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/secret.yaml'
-	            bat 'kubectl get secret test-secret'
+	            bat 'kubectl get secret-envars-test-pod'
 		    bat 'kubectl exec -it secret-envars-test-pod -- /bin/bash'	
 		    bat 'root@secret-envars-test-pod:/# printenv'
 		   }
