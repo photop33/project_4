@@ -31,12 +31,12 @@ pipeline {
                 }
             }
         }
-        stage('clean_environemnt') {
+        stage('clean_environemnt-1') {
             steps {
                 script {
                     bat 'start/min python3 clean_environemnt.py'
-                    bat 'echo success clean_environemnt'
-                   }
+                    bat 'echo success clean_environemnt-1'
+                 }
             }
         }
         stage ('Build Docker image - locally'){
@@ -85,10 +85,17 @@ pipeline {
                 bat 'docker-compose down '
                 bat "docker image rm  ${BUILD_NUMBER}"      		
                 bat 'echo docker-compose down + delete image'
-		bat 'start/min python3 clean_environemnt.py'
                 }
             }
         }  
+	stage('clean_environemnt-2') {
+            steps {
+                script {
+                    bat 'start/min python3 clean_environemnt.py'
+                    bat 'echo success clean_environemnt-2'  
+		}
+	    }
+	}
 	stage ('Deploy HELM'){
             steps{
                 script{
@@ -117,19 +124,19 @@ pipeline {
 		   }
                 }
 	    }
-	stage('clean_environemnt') {
+	stage('clean_environemnt-3') {
             steps {
                 script {
                     bat 'start/min python3 clean_environemnt.py'
-                    bat 'echo success clean_environemnt'
+                    bat 'echo success clean_environemnt-3'
                    }
-            }
-        }
-	}
+              }
+          }
+      }
 	    
   post {	
       always {	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
           }	
-  }
+     }
 }
