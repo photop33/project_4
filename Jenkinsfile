@@ -112,8 +112,7 @@ pipeline {
 	stage ('extra-secret'){
 	    steps{
                 script{ 
-		    //bat 'kubectl create secret generic sample-db-secret --from-literal=username=admin --from-literal=password=’7f3,F9D^LJz37]!W’'
-		    bat 'kubectl create secret generic db-user-pass --from-file=admin --from-file=123456'
+		    bat 'kubectl create secret generic sample-db-secret --from-literal=username=admin --from-literal=password=’7f3,F9D^LJz37]!W’'
 		    bat 'kubectl get pod secret-envars-test-pod'
 		   }
                 } 
