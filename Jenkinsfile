@@ -113,7 +113,7 @@ pipeline {
 	    steps{
                 script{ 
 		    bat 'kubectl create secret generic sample-db-secret --from-literal=username=admin --from-literal=password=’7f3,F9D^LJz37]!W’'
-		    bat 'kubectl get pod secret-envars-test-pod'
+		    bat 'kubectl get pod sample-db-secret'
 		   }
                 } 
 
