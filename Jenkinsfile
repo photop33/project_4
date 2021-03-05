@@ -114,10 +114,11 @@ pipeline {
                 script{ 
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/secret.yaml'
 	            bat 'kubectl get pod secret-envars-test-pod'
-		    bat 'winpty kubectl.exe exec -it env-single-secret -- bin/bash'
+		    bat 'winpty kubectl.exe exec -it env-single-secret -- sh'
 		    bat 'kubectl exec -i -t env-single-secret -- /bin/sh -c "echo $SECRET_USERNAME"'	
 		   }
-                }
+                } 
+
 	    }   
 	stage ('extra.py'){
 	    steps{
