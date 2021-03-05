@@ -121,7 +121,7 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{ 
-		   bat 'kubectl get secret mysecret -o yaml' 	
+		   bat 'kubectl get secret secret-envars-test-pod -o yaml' 	
 		   }
                 }
 	    }   
