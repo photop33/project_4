@@ -19,7 +19,7 @@ pipeline {
             steps {
                 script {
                     bat 'start /min python rest_app.py'
-                    bat 'echo success dockker'
+                    bat 'echo success rest_app.py'
                 }
             }
         }
@@ -63,11 +63,11 @@ pipeline {
 			    bat "more .env"
             }	
          }
-        stage ('docker'){
+        stage ('docker-compose'){
             steps {
                 script{
                     bat 'docker-compose up -d'
-                    bat 'echo hellp'
+                    bat 'echo success docker-compose'
                     }
                 }
            }       
@@ -94,9 +94,10 @@ pipeline {
                 script{
 		    bat 'minikube start'
                     bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/deployment.yaml'
-	            bat 'kubectl get deployments'
 	            bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/service.yaml'
-                    bat 'echo succes HELM.py'
+		    bat 'kubectl get deployments'
+		    bat 'kubectl get service'
+                    bat 'echo succes Deploy HELM'
 		    }  
                 }
             }
@@ -104,6 +105,7 @@ pipeline {
 	    steps{
                 script{
 		    bat 'python3 K8S_backend_testing.py'
+		    bat 'python3 succes K8S_backend_testing.py'
 	
 		   }
                 }
@@ -115,6 +117,14 @@ pipeline {
 		   }
                 }
 	    }
+	stage('clean_environemnt') {
+            steps {
+                script {
+                    bat 'start/min python3 clean_environemnt.py'
+                    bat 'echo success clean_environemnt'
+                   }
+            }
+        }
 	}
 	    
   post {	
