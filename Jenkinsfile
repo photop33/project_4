@@ -112,9 +112,8 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{
-		    bat 'echo $SECRET_USERNAME'
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
-		    bat 'python3 succes K8S_backend_testing.py'
+		    bat 'echo $SECRET_USERNAME'
 	
 		   }
                 }
@@ -124,7 +123,6 @@ pipeline {
                 script{
 		    bat 'python3 K8S_backend_testing.py'
 		    bat 'python3 succes K8S_backend_testing.py'
-	
 		   }
                 }
 	    }
