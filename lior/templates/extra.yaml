@@ -7,7 +7,7 @@ spec:
   - name: mycontainer
     image: redis
     env:
-      - name: SECRET_USERNAME
+      - name: lior_swisa
         valueFrom:
           secretKeyRef:
             name: mysecret
