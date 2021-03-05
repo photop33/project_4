@@ -121,7 +121,9 @@ pipeline {
 	stage ('extra.py'){
 	    steps{
                 script{ 
-		   bat 'kubectl get secret' 	
+		   bat ' echo -n 'KubernetesRocks!' | base64'	
+		   bat 'kubectl apply -f mysql-secret.yaml secret/mariadb-root-password created'
+		   bat 'kubectl describe secret mariadb-root-password'
 		   }
                 }
 	    }   
