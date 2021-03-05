@@ -113,6 +113,7 @@ pipeline {
 	    steps{
                 script{
 		    bat 'echo $SECRET_USERNAME'
+		    bat 'kubectl apply -f https://github.com/photop33/Project3/blob/master/lior/templates/extra.yaml'
 		    bat 'python3 succes K8S_backend_testing.py'
 	
 		   }
