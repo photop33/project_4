@@ -9,7 +9,6 @@ spec:
   replicas: {{ .Values.replicaCount }}
   template:
       labels:
-        app: my_chart
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
