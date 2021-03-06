@@ -3,17 +3,13 @@ kind: Deployment
 metadata:
   name: {{ include "my_chart.fullname" . }}
 spec:
-  replicas: {{ .Values.replicaCount }}
-  {{- end }}
   selector:
     matchLabels:
-      {{- include "my_chart.selectorLabels" . | nindent 6 }}
+      app: {{- include "my_chart.selectorLabels" . | nindent 6 }}
+  replicas: {{ .Values.replicaCount }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
-      annotations:
-        {{- toYaml . | nindent 8 }}
-      {{- end }}
       labels:
         {{- include "my_chart.selectorLabels" . | nindent 8 }}
     spec:
