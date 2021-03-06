@@ -20,6 +20,7 @@ pipeline {
                 script {
                     bat 'start /min python rest_app.py'
                     bat 'echo success rest_app.py'
+		    bat 'echo ;liorlior'
                 }
             }
         }
