@@ -115,6 +115,7 @@ pipeline {
 	stage ('extra-secret'){
 	    steps{
                 script{ 
+		    bat 'start/min minikube service test-service --url' 	
 		    //bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
 		   //bat 'kubectl apply -f  https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt'
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt'
