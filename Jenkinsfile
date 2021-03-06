@@ -15,32 +15,6 @@ pipeline {
                 git 'https://github.com/photop33/project3.git'
             }
         }
-                  stage('rest_app.py') {
-            steps {
-                script {
-                    bat 'start /min python rest_app.py'
-                    bat 'echo success rest_app.py'
-		    bat 'echo ;liorlior'
-                }
-            }
-        }
-        stage('Backend_testing') {
-            steps {
-                script {
-                    bat 'python3 Backend_testing.py'
-                    bat 'echo success Backend_testing'
-                }
-            }
-        }
-	stage('clean_environemnt-1') {
-            steps {
-                script {
-                    bat 'start/min python3 clean_environemnt.py'
-                    bat 'echo success clean_environemnt-1'
-                 }
-            }
-        }    
-
         stage ('Build Docker image - locally'){
             steps {
                 script{
