@@ -106,8 +106,8 @@ pipeline {
 		    bat 'kubectl get deployments'  
 		    bat 'kubectl get service'
 		    //bat 'minikube service hello-python3 --url' 
-		    bat 'start/min minikube service hello-python-service --url' 	
-		    bat 'minikube service test-service --url' 	
+		    //bat 'start/min minikube service hello-python-service --url' 	
+		    bat 'start/min minikube service test-service --url' 	
                     bat 'echo succes Deploy HELM'
 		    }  
                 }
