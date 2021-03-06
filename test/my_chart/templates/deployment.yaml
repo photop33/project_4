@@ -9,7 +9,6 @@ spec:
   replicas: {{ .Values.replicaCount }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
       labels:
         {{- include "my_chart.selectorLabels" . | nindent 8 }}
     spec:
