@@ -8,7 +8,6 @@ spec:
       app: {{ include "my_chart.fullname" . }}
   replicas: {{ .Values.replicaCount }}
   template:
-    metadata:
       labels:
         app:  {{ include "my_chart.fullname" . }}
     spec:
