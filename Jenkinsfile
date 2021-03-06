@@ -105,8 +105,6 @@ pipeline {
 	            bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/service.yaml'
 		    bat 'kubectl get deployments'  
 		    bat 'kubectl get service'
-		    //bat 'minikube service hello-python3 --url' 
-		    //bat 'start/min minikube service hello-python-service --url' 	
 		    bat 'start/min minikube service test-service --url' 	
                     bat 'echo succes Deploy HELM'
 		    }  
@@ -115,16 +113,12 @@ pipeline {
 	stage ('extra-secret'){
 	    steps{
                 script{ 
-		    bat 'start/min minikube service test-service --url' 	
-		    //bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/extra.yaml'
-		   //bat 'kubectl apply -f  https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt'
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt'
 		    bat 'kubectl get secret mysecret -o yaml'
 		    bat 'kubectl get pod secret-envars-test-pod'
 		    bat 'echo succes secret'
 		   }
                 } 
-
 	    }  
 	stage ('extra.py'){
 	    steps{
