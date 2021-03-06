@@ -47,14 +47,7 @@ pipeline {
                     }
                 }
            }       
-        stage ('docker_backend_testing'){
-            steps{
-                script{
-                    bat 'python3 docker_backend_testing.py'
-                    bat 'echo success docker_backend_testing.py'
-                    }
-                }
-            }
+
         stage('docker-compose down & delete image') { 
             steps {
                 script{
