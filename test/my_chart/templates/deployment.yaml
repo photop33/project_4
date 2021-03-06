@@ -9,7 +9,7 @@ spec:
   replicas: {{ .Values.replicaCount }}
   template:
       labels:
-        app:  {{ include "my_chart.fullname" . }}
+        app: {{ include "my_chart.fullname" . }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
