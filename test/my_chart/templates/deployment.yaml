@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Chart.Name }}
+  name: {{ include "my_chart.fullname" . }}
 spec:
   selector:
     matchLabels: 
