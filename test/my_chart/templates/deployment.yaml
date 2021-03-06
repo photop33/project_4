@@ -4,8 +4,7 @@ metadata:
   name: {{ include "my_chart.fullname" . }}
 spec:
   selector:
-    matchLabels:
-    {{- include "my_chart.selectorLabels" . | nindent 6 }}
+    matchLabels: 
       app: {{ include "my_chart.fullname" . }}
   replicas: {{ .Values.replicaCount }}
   template:
