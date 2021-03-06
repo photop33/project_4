@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        {{- include "my_chart.selectorLabels" . | nindent 8 }}
+        app:  {{ include "my_chart.fullname" . }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
