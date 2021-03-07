@@ -121,6 +121,8 @@ pipeline {
 		    git add  k8s_url.txt
 		    git commit -a "Add existing file"
 		    start/min git push origin master
+		    rmdir /S chart
+		    y
 		    """
 		    }  
                 }
