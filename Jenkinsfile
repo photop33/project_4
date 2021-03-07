@@ -101,8 +101,8 @@ pipeline {
             steps{
                 script{
 		    bat 'helm create project-helm'
-		    //bat	'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
-		    bat 'helm install lior photop33/Project3 --set image.version=photop/project-3:${BUILD_NUMBER} project-helm'
+		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
+		    bat 'helm install project-4 --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
 		    bat 'helm repo update'
 		    bat 'helm list --all'
 		    }  
