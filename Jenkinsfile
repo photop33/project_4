@@ -101,7 +101,7 @@ pipeline {
             steps{
                 script{
 		    bat 'helm create project-helm'
-		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
+		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart/values.yaml,image.tag=${BUILD_NUMBER} project-helm'
 		    bat 'helm install project-4 --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
 		    bat 'helm repo update'
 		    bat 'helm list --all'
@@ -115,8 +115,8 @@ pipeline {
 		   ping -n 10 127.0.0.1 
                    (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
                     type k8s_url.txt
-		    git commit -m "Add existing file"
-		    git push origin master
+		    git commit -a "Add existing file"
+		    start/min git push origin master
 		    """
 		    }  
                 }
