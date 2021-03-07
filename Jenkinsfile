@@ -101,7 +101,9 @@ pipeline {
             steps{
                 script{
 		    bat 'helm create project-helm'
-		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set Deployment.containerPort=5500 --set replicaCount=5 --set service.port=5500 --set type=LoadBalancer --set repository=photop33/Project3  project-helm'
+		    bat 'git clone https://github.com/photop33/chart.git'
+		    bat 'cd chart' 
+		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
 		    //bat 'helm install project-4 --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
 		    bat 'helm repo update'
 		    bat 'helm list --all'
