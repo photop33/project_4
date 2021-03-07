@@ -101,8 +101,8 @@ pipeline {
             steps{
                 script{
 		    bat 'helm create project-helm'
-		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set replicaCount= 5 project-helm'
-		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set repository= photop33/Project3 project-helm'
+		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set replicaCount= 5 '
+		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set repository= photop33/Project3 '
 		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set type= LoadBalancer project-helm'
 		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} --set   port= 5500 project-helm'
 		    bat 'helm repo update'
