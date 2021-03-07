@@ -120,8 +120,8 @@ pipeline {
 		    git diff
 		    git add  k8s_url.txt
 		    git commit -m "Add existing file"
-		    start/min git push origin master
-		    rmdir /S chart
+		     git push origin master
+		    rmdir /S chart  /f /q /s
 		    echo y
 		    """
 		    }  
