@@ -102,6 +102,7 @@ pipeline {
                 script{
 		    bat 'mkdir helm'
                     bat 'cd helm'
+		    bat 'helm create helm' 
 		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} helm'
 		    bat 'helm repo update'
 		    bat 'helm list --all'
