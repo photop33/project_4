@@ -183,5 +183,6 @@ pipeline {
   post {	
       always {	
              bat "docker rmi $registry:${BUILD_NUMBER}"	
+         }
      }	
 }
