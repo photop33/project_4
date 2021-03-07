@@ -103,7 +103,7 @@ pipeline {
 		    bat 'helm create project-helm'
 		    bat 'git clone https://github.com/photop33/chart.git'
 		    bat 'cd chart' 
-		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
+		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} chart'
 		    //bat 'helm install project-4 --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
 		    bat 'helm repo update'
 		    bat 'helm list --all'
