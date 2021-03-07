@@ -100,6 +100,7 @@ pipeline {
 	stage ('Deploy HM'){
             steps{
                 script{
+		    bat 'create project-helm'
 		    bat	'helm install project-4 --dry-run  --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
 		    bat 'helm repo update'
 		    bat 'helm list --all'
