@@ -114,7 +114,10 @@ pipeline {
                    bat """ start /min /b minikube service project-4-lior --url >  k8s_url-test.txt
 		   ping -n 10 127.0.0.1 
                    (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
-                    type k8s_url.txt """		   
+                    type k8s_url.txt
+		    git commit -m "Add existing file"
+		    git push origin master
+		    """
 		    }  
                 }
             }
