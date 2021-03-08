@@ -128,7 +128,7 @@ pipeline {
 	stage ('K8S_backend_testing.py'){
 	    steps{
                 script{
-		    bat 'ping -n 20 127.0.0.1 '
+	            bat 'echo %cd%'
 		    bat 'python3 K8S_backend_testing.py'
 		    bat 'echo succes K8S_backend_testing.py'
 		   }
