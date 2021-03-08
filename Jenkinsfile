@@ -100,24 +100,24 @@ pipeline {
 	stage ('Deploy HM'){
             steps{
                 script{
-		    bat 'helm create project-helm'
-		    bat 'git clone https://github.com/photop33/chart.git'
-		    bat 'cd chart' 
-		    bat 'helm install project-4 --dry-run --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} chart'
-		    //bat 'helm install project-4 --debug --set image.repostitory=photop33/chart,image.tag=${BUILD_NUMBER} project-helm'
-		    bat 'helm repo update'
-		    bat 'helm list --all'
+            bat """minikube start
+             cd lior
+             dir
+             helm install test lior-0.1.0.tgz lior
+		     //helm install project-4-lior --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} lior'
+		     helm list --all
+		     minikube service list 
+		     """
 		    }  
                 }
             }
 	 stage ('Deploy HELM'){
             steps{
                 script{
-                   bat """ start /min /b minikube service project-4-lior --url >  k8s_url-test.txt
+                   bat """ start /min /b minikube service test-lior --url >  k8s_url-test.txt
 		   ping -n 10 127.0.0.1 
                    (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
-                    type k8s_url.txt
-		    """
+                    type k8s_url.txt """		   
 		    }  
                 }
             }
@@ -170,12 +170,10 @@ pipeline {
                 script {
                     bat 'start/min python3 clean_environemnt.py'
                     bat 'echo success clean_environemnt-3'
-	            bat 'rmdir /S chart /q /s'
-		    bat 'helm list --all'
-	            bat 'helm delete project-4 '
-	            bat 'helm delete project '
+	            bat 'helm delete test '
                     bat 'del k8s_url-test.txt'
                     bat 'del k8s_url.txt'
+		    bat 'helm list --all'
                    }
               }
           }
