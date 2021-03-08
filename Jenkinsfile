@@ -120,6 +120,7 @@ pipeline {
 		    git diff
 		    git add  k8s_url.txt
 		    git commit -m "Add existing file"
+		    git remote set-url origin https://github.com/photop33/project_4.git
 		    git push https://github.com/photop33/project_4  
 		    rmdir /S chart /q /s
 		    echo y
