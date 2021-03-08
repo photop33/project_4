@@ -120,7 +120,7 @@ pipeline {
 		    ping -n 10 127.0.0.1 
                     (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
                     type k8s_url.txt
-		    echo success Deploy -> k8s_url.txt
+		    echo success Deploy ->> k8s_url.txt
 		    """		   
 		    }  
                 }
@@ -128,6 +128,7 @@ pipeline {
 	stage ('K8S_backend_testing.py'){
 	    steps{
                 script{
+		    bat 'ping -n 20 127.0.0.1 '
 		    bat 'python3 K8S_backend_testing.py'
 		    bat 'echo succes K8S_backend_testing.py'
 		   }
