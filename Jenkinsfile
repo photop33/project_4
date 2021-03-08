@@ -126,7 +126,6 @@ pipeline {
 	stage ('K8S_backend_testing.py'){
 	    steps{
                 script{
-		    bat 'ping -n 50 127.0.0.1 '
 		    bat 'python3 K8S_backend_testing.py'
 		    bat 'echo succes K8S_backend_testing.py'
 		   }
@@ -139,7 +138,6 @@ pipeline {
 		    bat 'kubectl get secrets '
 		    bat 'kubectl apply -f https://raw.githubusercontent.com/photop33/Project3/master/lior/templates/username.txt'
 		    bat 'kubectl get secret mysecret -o yaml'
-		    bat 'kubectl get pod secret-envars-test-pod'
 		    bat 'echo succes secret'
 		   }
                 } 
