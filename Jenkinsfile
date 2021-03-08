@@ -97,7 +97,7 @@ pipeline {
 		}
 	    }
 	}
-	stage ('Deploy HM'){
+	stage ('Deploy helm'){
             steps{
                 script{
                     bat """minikube start
@@ -106,17 +106,20 @@ pipeline {
 		         //helm install project-4-lior --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} lior'
 		         helm list --all
 		          minikube service list 
+			  echo success Deploy helm
 		        """
 		    }  
                 }
             }
-	 stage ('Deploy HELM'){
+	 stage ('Deploy > k8s_url.txt'){
             steps{
                 script{
                    bat """ start /min /b minikube service test-lior --url >  k8s_url-test.txt
 		   ping -n 10 127.0.0.1 
                    (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
-                    type k8s_url.txt """		   
+                    type k8s_url.txt
+		    echo success Deploy > k8s_url.txt
+		    """		   
 		    }  
                 }
             }
@@ -126,7 +129,6 @@ pipeline {
 		    bat 'ping -n 50 127.0.0.1 '
 		    bat 'python3 K8S_backend_testing.py'
 		    bat 'echo succes K8S_backend_testing.py'
-		    bat 'ping -n 50 127.0.0.1 '
 		   }
                 }
 	    }
@@ -169,12 +171,12 @@ pipeline {
 	stage('clean_environemnt-3') {
             steps {
                 script {
+		    bat 'helm list --all'
                     bat 'start/min python3 clean_environemnt.py'
                     bat 'echo success clean_environemnt-3'
 	            bat 'helm delete test '
                     bat 'del k8s_url-test.txt'
                     bat 'del k8s_url.txt'
-		    bat 'helm list --all'
                    }
               }
           }
