@@ -118,7 +118,7 @@ pipeline {
 		   ping -n 10 127.0.0.1 
                    (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
                     type k8s_url.txt
-		    echo success Deploy > k8s_url.txt
+		    echo success Deploy -> k8s_url.txt
 		    """		   
 		    }  
                 }
