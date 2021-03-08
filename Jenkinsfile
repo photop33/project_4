@@ -102,8 +102,7 @@ pipeline {
                 script{
                     bat """minikube start
                          cd lior
-                         dir
-                         helm install test lior-0.1.0.tgz lior
+                         helm install test lior-0.1.0.tgz 
 		         //helm install project-4-lior --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} lior'
 		         helm list --all
 		          minikube service list 
@@ -124,6 +123,7 @@ pipeline {
 	stage ('K8S_backend_testing.py'){
 	    steps{
                 script{
+		    bat 'ping -n 50 127.0.0.1 '
 		    bat 'python3 K8S_backend_testing.py'
 		    bat 'echo succes K8S_backend_testing.py'
 		    bat 'ping -n 50 127.0.0.1 '
