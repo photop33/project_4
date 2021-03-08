@@ -100,11 +100,12 @@ pipeline {
 	stage ('Deploy helm'){
             steps{
                 script{
-                    bat """minikube start
-                         cd lior
-                         helm install test lior-0.1.0.tgz 
-		         //helm install project-4-lior --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} lior'
-		         helm list --all
+                    bat """
+		          minikube start
+                          cd lior
+                          helm install test lior-0.1.0.tgz 
+		          //helm install project-4-lior --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} lior'
+		          helm list --all
 		          minikube service list 
 			  echo success Deploy helm
 		        """
@@ -114,9 +115,10 @@ pipeline {
 	 stage ('Deploy > k8s_url.txt'){
             steps{
                 script{
-                   bat """ start /min /b minikube service test-lior --url >  k8s_url-test.txt
-		   ping -n 10 127.0.0.1 
-                   (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
+                   bat """ 
+		    start /min /b minikube service test-lior --url >  k8s_url-test.txt
+		    ping -n 10 127.0.0.1 
+                    (type  k8s_url-test.txt | findstr "^http") >  k8s_url.txt
                     type k8s_url.txt
 		    echo success Deploy -> k8s_url.txt
 		    """		   
