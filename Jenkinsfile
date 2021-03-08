@@ -160,9 +160,7 @@ pipeline {
 		    bat 'kubectl get pods -l app=mysql'
 		    bat 'kubectl describe pvc mysql-pv-claim'
 		    bat 'start/min kubectl run -it --rm --image=mysql:5.6 --restart=Never mysql-client -- mysql -h mysql -ppassword'
-		    bat 'kubectl delete deployment,svc mysql'
-                    bat 'kubectl delete pvc mysql-pv-claim'
-                    bat 'kubectl delete pv mysql-pv-volume'
+
 		   }
                 } 
 	    }  
@@ -175,6 +173,10 @@ pipeline {
 	            bat 'helm delete test '
                     bat 'del k8s_url-test.txt'
                     bat 'del k8s_url.txt'
+		    bat 'kubectl delete deployment,svc mysql'
+                    bat 'kubectl delete pvc mysql-pv-claim'
+                    bat 'kubectl delete pv mysql-pv-volume'
+		    bat 'helm list --all'
                    }
               }
           }
