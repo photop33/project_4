@@ -103,7 +103,7 @@ pipeline {
                     bat """
 		          minikube start
                           cd lior
-                          helm install test lior-0.1.0.tgz 
+                          helm install test --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER}  lior-0.1.0.tgz 
 		          //helm install project-4-lior --dry-run  --debug --set image.repostitory=photop33/Project3,image.tag=${BUILD_NUMBER} lior'
 		          helm list --all
 		          minikube service list 
